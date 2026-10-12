@@ -1,0 +1,11 @@
+{
+  "name": "first-seven-years",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The First Seven Years — website prototype",
+  "scripts": {
+    "dev": "python dev.py",
+    "build": "python build.py",
+    "start": "python -m http.server 8477 --directory site"
+  }
+}
