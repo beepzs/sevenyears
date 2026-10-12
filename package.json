@@ -5,7 +5,7 @@
   "description": "The First Seven Years — website prototype",
   "scripts": {
     "dev": "python dev.py",
-    "build": "python build.py",
+    "build": "python3 build.py || python build.py",
     "start": "python -m http.server 8477 --directory site"
   }
 }

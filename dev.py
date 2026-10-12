@@ -70,7 +70,7 @@ RED_FLAG_KEYWORDS = [
 ]
 
 
-class Handler(http.server.SimpleHTTPRequestHandler):
+class DevServerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(SITE_DIR), **kwargs)
 
@@ -300,7 +300,7 @@ def main():
     watcher_thread.start()
 
     server_address = (args.host, args.port)
-    httpd = http.server.ThreadingHTTPServer(server_address, Handler)
+    httpd = http.server.ThreadingHTTPServer(server_address, DevServerHandler)
 
     print(f"\n=======================================================")
     print(f"  The First Seven Years — Local Dev Server")
