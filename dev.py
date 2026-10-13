@@ -134,6 +134,19 @@ class DevServerHandler(http.server.SimpleHTTPRequestHandler):
                     pass
             self.send_json({"status": "error", "message": "Not authenticated"}, status=401)
             return
+        # SPA fallback: serve /admin/index.html for any /admin/* path
+        # that doesn't correspond to a real file (e.g. /admin/topics on refresh)
+        if clean_path.startswith("/admin/") and clean_path not in ("/admin/admin.css", "/admin/admin.js"):
+            admin_index = SITE_DIR / "admin" / "index.html"
+            if admin_index.exists():
+                content = admin_index.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
         super().do_GET()
 
     def do_POST(self):
