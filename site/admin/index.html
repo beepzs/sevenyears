@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,737 +9,263 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/admin/admin.css">
 </head>
+
 <body>
 
-<div class="admin-shell">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <a href="/admin/" class="sidebar__brand">
-      <div class="sidebar__logo">The First Seven Years</div>
-      <span class="sidebar__badge">CMS</span>
-    </a>
+  <div class="admin-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a href="/admin/" class="sidebar__brand">
+        <div class="sidebar__logo">The First Seven Years</div>
+        <span class="sidebar__badge">CMS</span>
+      </a>
 
-    <div class="sidebar__nav">
-      <span class="sidebar__section-title">Overview</span>
-      <button class="nav-item is-active" data-tab="dashboard" onclick="ADMIN.switchTab('dashboard')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-        <span>Dashboard</span>
-      </button>
+      <div class="sidebar__nav">
+        <span class="sidebar__section-title">Overview</span>
+        <button class="nav-item is-active" data-tab="dashboard" onclick="ADMIN.switchTab('dashboard')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect width="7" height="9" x="3" y="3" rx="1" />
+            <rect width="7" height="5" x="14" y="3" rx="1" />
+            <rect width="7" height="9" x="14" y="12" rx="1" />
+            <rect width="7" height="5" x="3" y="16" rx="1" />
+          </svg>
+          <span>Dashboard</span>
+        </button>
 
-      <span class="sidebar__section-title">Content Management</span>
-      <button class="nav-item" data-tab="topics" onclick="ADMIN.switchTab('topics')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
-        <span>Topic Master</span>
-        <span class="pill-count" data-count="topics">13</span>
-      </button>
+        <span class="sidebar__section-title">Content Management</span>
+        <button class="nav-item" data-tab="topics" onclick="ADMIN.switchTab('topics')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+            <path d="M7 7h.01" />
+          </svg>
+          <span>Topic Master</span>
+          <span class="pill-count" data-count="topics">13</span>
+        </button>
 
-      <button class="nav-item" data-tab="answers" onclick="ADMIN.switchTab('answers')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Question &amp; Answer</span>
-        <span class="pill-count" data-count="answers">10</span>
-      </button>
+        <button class="nav-item" data-tab="answers" onclick="ADMIN.switchTab('answers')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          <span>Question &amp; Answer</span>
+          <span class="pill-count" data-count="answers">10</span>
+        </button>
 
-      <button class="nav-item" data-tab="faqs" onclick="ADMIN.switchTab('faqs')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-        <span>FAQ Management</span>
-        <span class="pill-count" data-count="faqs">5</span>
-      </button>
+        <button class="nav-item" data-tab="faqs" onclick="ADMIN.switchTab('faqs')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <path d="M12 17h.01" />
+          </svg>
+          <span>FAQ Management</span>
+          <span class="pill-count" data-count="faqs">5</span>
+        </button>
 
-      <button class="nav-item" data-tab="videos" onclick="ADMIN.switchTab('videos')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="2" y="5" rx="2"/></svg>
-        <span>Video Library</span>
-        <span class="pill-count" data-count="videos">30</span>
-      </button>
+        <button class="nav-item" data-tab="videos" onclick="ADMIN.switchTab('videos')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="23 7 16 12 23 17 23 7" />
+            <rect width="14" height="14" x="2" y="5" rx="2" />
+          </svg>
+          <span>Video Library</span>
+          <span class="pill-count" data-count="videos">30</span>
+        </button>
 
-      <button class="nav-item" data-tab="youtube" onclick="ADMIN.switchTab('youtube')">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        <span>YouTube Reports</span>
-        <span class="pill-count" data-count="youtube" style="background:#ff0000;color:#fff">LIVE</span>
-      </button>
+        <button class="nav-item" data-tab="youtube" onclick="ADMIN.switchTab('youtube')">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+          <span>YouTube Reports</span>
+          <span class="pill-count" data-count="youtube" style="background:#ff0000;color:#fff">LIVE</span>
+        </button>
 
-      <button class="nav-item" data-tab="submissions" onclick="ADMIN.switchTab('submissions')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-        <span>Ask the Doctor Inbox</span>
-        <span class="pill-count" data-count="submissions" style="background:var(--mint);color:var(--navy-deep)">3</span>
-      </button>
+        <button class="nav-item" data-tab="submissions" onclick="ADMIN.switchTab('submissions')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="m22 2-7 20-4-9-9-4Z" />
+            <path d="M22 2 11 13" />
+          </svg>
+          <span>Ask the Doctor Inbox</span>
+          <span class="pill-count" data-count="submissions"
+            style="background:var(--mint);color:var(--navy-deep)">3</span>
+        </button>
 
-      <button class="nav-item" data-tab="experts" onclick="ADMIN.switchTab('experts')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>Experts &amp; Hosts</span>
-        <span class="pill-count" data-count="experts">6</span>
-      </button>
+        <button class="nav-item" data-tab="experts" onclick="ADMIN.switchTab('experts')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span>Experts &amp; Hosts</span>
+          <span class="pill-count" data-count="experts">6</span>
+        </button>
 
-      <button class="nav-item" data-tab="pages" onclick="ADMIN.switchTab('pages')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <span>Page Management</span>
-        <span class="pill-count" data-count="pages">4</span>
-      </button>
+        <button class="nav-item" data-tab="pages" onclick="ADMIN.switchTab('pages')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" x2="8" y1="13" y2="13" />
+            <line x1="16" x2="8" y1="17" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+          </svg>
+          <span>Page Management</span>
+          <span class="pill-count" data-count="pages">4</span>
+        </button>
 
-      <span class="sidebar__section-title">Navigation &amp; Structure</span>
-      <button class="nav-item" data-tab="menus" onclick="ADMIN.switchTab('menus')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        <span>Menu Management</span>
-        <span class="pill-count" data-count="menus">25</span>
-      </button>
+        <span class="sidebar__section-title">Navigation &amp; Structure</span>
+        <button class="nav-item" data-tab="menus" onclick="ADMIN.switchTab('menus')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+          <span>Menu Management</span>
+          <span class="pill-count" data-count="menus">25</span>
+        </button>
 
-      <span class="sidebar__section-title">Administration</span>
-      <button class="nav-item" data-tab="roles" onclick="ADMIN.switchTab('roles')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>Roles &amp; Permissions</span>
-        <span class="pill-count" data-count="users">4</span>
-      </button>
+        <span class="sidebar__section-title">Administration</span>
+        <button class="nav-item" data-tab="roles" onclick="ADMIN.switchTab('roles')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span>Roles &amp; Permissions</span>
+          <span class="pill-count" data-count="users">4</span>
+        </button>
 
-      <button class="nav-item" data-tab="settings" onclick="ADMIN.switchTab('settings')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        <span>Settings &amp; Security</span>
-      </button>
-    </div>
-
-    <div class="sidebar__footer" id="sidebar-footer">
-      <div class="sidebar__user-card">
-        <div class="sidebar__user-info">
-          <span class="sidebar__user-name" id="sidebar-user-name">Dr. Murray Clarke</span>
-          <span class="sidebar__user-role" id="sidebar-user-role">Super Admin</span>
-        </div>
-        <button class="sidebar__logout-btn" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
-          <span>Log Out</span> 🚪
+        <button class="nav-item" data-tab="settings" onclick="ADMIN.switchTab('settings')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          <span>Settings &amp; Security</span>
         </button>
       </div>
-      <a href="/" target="_blank"><span>↗</span> View Public Website</a>
-    </div>
-  </aside>
 
-  <!-- MAIN WRAPPER -->
-  <main class="main-wrapper">
-    <!-- TOPBAR -->
-    <header class="topbar">
-      <div class="topbar__left">
-        <div class="topbar__search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="search" placeholder="Quick search topics, Q&amp;As, videos..." oninput="ADMIN.handleSearch(this.value)">
-        </div>
-      </div>
-
-      <div class="topbar__right">
-        <!-- Live User & Role Switcher -->
-        <div class="role-badge-box">
-          <label for="user-select">Viewing as:</label>
-          <select id="user-select" onchange="ADMIN.handleUserChange(this.value)">
-            <option value="usr-1">👑 Dr. Murray Clarke (Super Admin)</option>
-            <option value="usr-2">✍️ Bryce Wylde (Editor)</option>
-            <option value="usr-3">🩺 Dr. Elisa Song (Medical Reviewer)</option>
-            <option value="usr-4">📝 Sarah Jenkins (Author)</option>
-          </select>
-        </div>
-
-        <!-- Notification Alerts Bell & Dropdown -->
-        <div class="notif-bell-wrap" id="notif-bell-container">
-          <button class="notif-bell-btn" id="topbar-notif-btn" onclick="ADMIN.toggleNotifDropdown()" title="Notifications &amp; Alerts" aria-label="Notifications">
-            <span>🔔</span>
-            <span class="notif-bell-badge" id="topbar-notif-count">4</span>
+      <div class="sidebar__footer" id="sidebar-footer">
+        <div class="sidebar__user-card">
+          <div class="sidebar__user-info">
+            <span class="sidebar__user-name" id="sidebar-user-name">Dr. Murray Clarke</span>
+            <span class="sidebar__user-role" id="sidebar-user-role">Super Admin</span>
+          </div>
+          <button class="sidebar__logout-btn" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
+            <span>Log Out</span> 🚪
           </button>
-
-          <div class="notif-dropdown-menu" id="topbar-notif-dropdown" style="display:none">
-            <div class="notif-dropdown-header">
-              <div style="display:flex;align-items:center;gap:0.4rem">
-                <strong style="font-size:0.85rem;color:var(--navy)">🔔 Platform Alerts</strong>
-                <span class="badge badge--redflag" id="notif-badge-sub" style="font-size:0.68rem;padding:0.15rem 0.45rem">4 Pending</span>
-              </div>
-              <button class="btn btn--link btn--sm" onclick="ADMIN.markAllNotifsRead()" style="font-size:0.75rem;padding:0;color:var(--navy);text-decoration:underline;background:none;border:none;cursor:pointer">Mark all read</button>
-            </div>
-            <div class="notif-dropdown-body" id="topbar-notif-items">
-              <!-- Live items populated by admin.js -->
-            </div>
-            <div class="notif-dropdown-footer">
-              <button class="btn btn--sm btn--outline" style="width:100%;font-size:0.78rem" onclick="ADMIN.switchTab('submissions'); ADMIN.closeNotifDropdown();">
-                📥 View Inbound Submissions &amp; Triage
-              </button>
-            </div>
-          </div>
         </div>
-
-        <!-- Logout Action -->
-        <button class="btn btn--outline btn--sm btn--logout" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
-          🚪 Log Out
-        </button>
+        <a href="/" target="_blank"><span>↗</span> View Public Website</a>
       </div>
-    </header>
+    </aside>
 
-    <!-- CONTENT AREA -->
-    <div class="content-area">
-
-      <!-- 1. DASHBOARD TAB -->
-      <section id="tab-dashboard" class="tab-view">
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Platform Dashboard</h1>
-            <p class="page-subtitle">Editorial overview of The First Seven Years static knowledge library.</p>
-          </div>
-        </div>
-        <div id="dashboard-content"></div>
-      </section>
-
-      <!-- 2. TOPIC MASTER TAB -->
-      <section id="tab-topics" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Topic Master</h1>
-            <p class="page-subtitle">Configure core topic hubs, expert assignments, videos, and hub intro statements.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('topic')">+ New Topic Hub</button>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <h2 class="card__title" style="margin:0">All Topic Hubs</h2>
-              <span class="badge" style="background:var(--cream-deep);color:var(--ink-2);font-weight:500;font-size:0.75rem">⠿ Drag &amp; drop to reorder</span>
-            </div>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('topics', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('topics', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('topics', 'draft')">Drafts</button>
-              </div>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:38px;text-align:center" title="Drag to reorder">⠿</th>
-                  <th>Topic &amp; Slug</th>
-                  <th>Assigned Experts</th>
-                  <th>Main Video</th>
-                  <th>Ages</th>
-                  <th>Assigned Content</th>
-                  <th>Status</th>
-                  <th style="width:85px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="topics-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. QUESTION & ANSWER TAB -->
-      <section id="tab-answers" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Question &amp; Answer (Parent Answers)</h1>
-            <p class="page-subtitle">Manage clinical parent answers, age suitability tags, and expert attribution.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('answer')">+ Add Question &amp; Answer</button>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">Parent Answers Library</h2>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('answers', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('answers', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('answers', 'draft')">Drafts</button>
-              </div>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Question &amp; Expert</th>
-                  <th>Topic</th>
-                  <th>Source Video</th>
-                  <th>Clinical Status</th>
-                  <th>Publish Status</th>
-                  <th style="width:90px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="answers-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. FAQ TAB -->
-      <section id="tab-faqs" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">FAQ Management</h1>
-            <p class="page-subtitle">Frequently asked questions appearing on the public /faq/ directory.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('faq')">+ Add FAQ</button>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">General &amp; Clinical FAQs</h2>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('faqs', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('faqs', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('faqs', 'draft')">Drafts</button>
-              </div>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Question &amp; Answer</th>
-                  <th>Order</th>
-                  <th>Status</th>
-                  <th style="width:90px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="faqs-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. VIDEO MANAGEMENT TAB -->
-      <section id="tab-videos" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Video Management</h1>
-            <p class="page-subtitle">Manage YouTube full episodes and short topic clips.</p>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap">
-            <button class="btn btn--outline" onclick="ADMIN.openGlobalDisclaimerModal()">⚖️ Global YouTube Disclaimer</button>
-            <button class="btn btn--outline" onclick="ADMIN.switchTab('youtube')">📊 View YouTube Report &rarr;</button>
-            <button class="btn btn--primary" onclick="ADMIN.openModal('video')">+ Add Video Clip / Episode</button>
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <div class="topbar__search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input type="search" placeholder="Quick search topics, Q&amp;As, videos..."
+              oninput="ADMIN.handleSearch(this.value)">
           </div>
         </div>
 
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">YouTube Channel Library</h2>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('videos', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('videos', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('videos', 'draft')">Drafts</button>
-              </div>
-            </div>
+        <div class="topbar__right">
+          <!-- Live User & Role Switcher -->
+          <div class="role-badge-box">
+            <label for="user-select">Viewing as:</label>
+            <select id="user-select" onchange="ADMIN.handleUserChange(this.value)">
+              <option value="usr-1">👑 Dr. Murray Clarke (Super Admin)</option>
+              <option value="usr-2">✍️ Bryce Wylde (Editor)</option>
+              <option value="usr-3">🩺 Dr. Elisa Song (Medical Reviewer)</option>
+              <option value="usr-4">📝 Sarah Jenkins (Author)</option>
+            </select>
           </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:85px">Thumbnail</th>
-                  <th>Title &amp; Expert</th>
-                  <th>Linked Q&amp;As</th>
-                  <th>Topics</th>
-                  <th>Status</th>
-                  <th style="width:90px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="videos-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
 
-      <!-- 5B. YOUTUBE REPORTS & ANALYTICS TAB -->
-      <section id="tab-youtube" class="tab-view" hidden>
-        <div class="page-header yt-report-header">
-          <div>
-            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.35rem">
-              <h1 class="page-title" style="margin:0">▶️ YouTube Reports &amp; Analytics</h1>
-              <span class="yt-sync-pill"><span class="pulse-dot"></span> Live Channel Sync</span>
-            </div>
-            <p class="page-subtitle" style="margin:0">
-              Real-time video views, audience retention, subscriber growth, and episode performance for 
-              <a href="https://www.youtube.com/@thefirstsevenyears" target="_blank" rel="noopener" style="color:var(--navy);font-weight:700;text-decoration:underline">@thefirstsevenyears ↗</a>
-            </p>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap">
-            <button class="btn btn--outline btn--sm" id="btn-refresh-yt" onclick="ADMIN.refreshYouTubeStats()">
-              🔄 Refresh Live Stats
+          <!-- Notification Alerts Bell & Dropdown -->
+          <div class="notif-bell-wrap" id="notif-bell-container">
+            <button class="notif-bell-btn" id="topbar-notif-btn" onclick="ADMIN.toggleNotifDropdown()"
+              title="Notifications &amp; Alerts" aria-label="Notifications">
+              <span>🔔</span>
+              <span class="notif-bell-badge" id="topbar-notif-count">4</span>
             </button>
-            <button class="btn btn--outline btn--sm" onclick="ADMIN.exportYouTubeCSV()">
-              📥 Export CSV Report
-            </button>
-            <a href="https://studio.youtube.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm">
-              ↗ YouTube Studio
-            </a>
-          </div>
-        </div>
 
-        <!-- Time Range Selector & Type Filter Bar -->
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;background:var(--cream);padding:0.75rem 1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;border:1px solid var(--line)">
-          <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap">
-            <span style="font-size:0.78rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.3rem">Time Range:</span>
-            <button class="filter-pill" data-yt-range="7d" onclick="ADMIN.filterYouTubeRange('7d')">Last 7 Days</button>
-            <button class="filter-pill is-active" data-yt-range="28d" onclick="ADMIN.filterYouTubeRange('28d')">Last 28 Days</button>
-            <button class="filter-pill" data-yt-range="90d" onclick="ADMIN.filterYouTubeRange('90d')">Last 90 Days</button>
-            <button class="filter-pill" data-yt-range="ytd" onclick="ADMIN.filterYouTubeRange('ytd')">Year to Date</button>
-            <button class="filter-pill" data-yt-range="all" onclick="ADMIN.filterYouTubeRange('all')">All Time</button>
-          </div>
-
-          <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap">
-            <span style="font-size:0.78rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.3rem">Format:</span>
-            <button class="filter-pill is-active" data-yt-type="all" onclick="ADMIN.filterYouTubeType('all')">All Content</button>
-            <button class="filter-pill" data-yt-type="episode" onclick="ADMIN.filterYouTubeType('episode')">Full Episodes</button>
-            <button class="filter-pill" data-yt-type="clip" onclick="ADMIN.filterYouTubeType('clip')">Shorts &amp; Clips</button>
-          </div>
-        </div>
-
-        <!-- 6 Core Channel KPI Cards -->
-        <div class="yt-kpi-grid">
-          <div class="yt-kpi-card" style="--kpi-accent:#ff0000">
-            <div class="yt-kpi-header">
-              <span>Total Video Views</span>
-              <span>👁️</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-views">284,520</div>
-            <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +18.4%</span> vs prior period</div>
-          </div>
-
-          <div class="yt-kpi-card" style="--kpi-accent:#3b82f6">
-            <div class="yt-kpi-header">
-              <span>Total Watch Time</span>
-              <span>⏱️</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-watch">14,830h</div>
-            <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +12.2%</span> total stream hours</div>
-          </div>
-
-          <div class="yt-kpi-card" style="--kpi-accent:#10b981">
-            <div class="yt-kpi-header">
-              <span>Channel Subscribers</span>
-              <span>👥</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-subs">18,450</div>
-            <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +1,240</span> new subscribers</div>
-          </div>
-
-          <div class="yt-kpi-card" style="--kpi-accent:#f59e0b">
-            <div class="yt-kpi-header">
-              <span>Avg Retention Rate</span>
-              <span>📊</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-retention">62.4%</div>
-            <div class="yt-kpi-sub">Avg duration: <strong>4m 18s</strong></div>
-          </div>
-
-          <div class="yt-kpi-card" style="--kpi-accent:#8b5cf6">
-            <div class="yt-kpi-header">
-              <span>Impression CTR</span>
-              <span>🎯</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-ctr">8.4%</div>
-            <div class="yt-kpi-sub">From <strong>2.1M</strong> impressions</div>
-          </div>
-
-          <div class="yt-kpi-card" style="--kpi-accent:#ec4899">
-            <div class="yt-kpi-header">
-              <span>Questions Generated</span>
-              <span>💬</span>
-            </div>
-            <div class="yt-kpi-val" id="yt-kpi-questions">4,320</div>
-            <div class="yt-kpi-sub">Views driving /ask-the-doctor/</div>
-          </div>
-        </div>
-
-        <!-- Visual Analytics Grid: 30-Day Views Trajectory & Audience Retention -->
-        <div class="yt-charts-grid">
-          <!-- Views Trajectory Chart -->
-          <div class="yt-chart-card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start">
-              <div>
-                <h3 class="yt-chart-title">📈 Daily Views &amp; Watch-Time Trajectory</h3>
-                <p class="yt-chart-desc">Daily view velocity over selected period with episode publish spikes</p>
+            <div class="notif-dropdown-menu" id="topbar-notif-dropdown" style="display:none">
+              <div class="notif-dropdown-header">
+                <div style="display:flex;align-items:center;gap:0.4rem">
+                  <strong style="font-size:0.85rem;color:var(--navy)">🔔 Platform Alerts</strong>
+                  <span class="badge badge--redflag" id="notif-badge-sub"
+                    style="font-size:0.68rem;padding:0.15rem 0.45rem">4 Pending</span>
+                </div>
+                <button class="btn btn--link btn--sm" onclick="ADMIN.markAllNotifsRead()"
+                  style="font-size:0.75rem;padding:0;color:var(--navy);text-decoration:underline;background:none;border:none;cursor:pointer">Mark
+                  all read</button>
               </div>
-              <span class="badge badge--published">Active Momentum</span>
-            </div>
-            <div id="yt-views-chart" style="height:220px;width:100%;margin-top:0.5rem">
-              <!-- Dynamically populated SVG Chart -->
+              <div class="notif-dropdown-body" id="topbar-notif-items">
+                <!-- Live items populated by admin.js -->
+              </div>
+              <div class="notif-dropdown-footer">
+                <button class="btn btn--sm btn--outline" style="width:100%;font-size:0.78rem"
+                  onclick="ADMIN.switchTab('submissions'); ADMIN.closeNotifDropdown();">
+                  📥 View Inbound Submissions &amp; Triage
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Traffic Sources & Demographics -->
-          <div class="yt-chart-card">
-            <h3 class="yt-chart-title">🧭 Traffic Sources &amp; Discovery</h3>
-            <p class="yt-chart-desc">How parents discover The First Seven Years episodes</p>
-            <div class="yt-source-list" id="yt-sources-list">
-              <!-- Dynamically populated progress bars -->
-            </div>
-          </div>
+          <!-- Logout Action -->
+          <button class="btn btn--outline btn--sm btn--logout" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
+            🚪 Log Out
+          </button>
         </div>
+      </header>
 
-        <!-- Video Performance Leaderboard & Table -->
-        <div class="card">
-          <div class="card__header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <!-- CONTENT AREA -->
+      <div class="content-area">
+
+        <!-- 1. DASHBOARD TAB -->
+        <section id="tab-dashboard" class="tab-view">
+          <div class="page-header">
             <div>
-              <h2 class="card__title">🎬 Video Performance &amp; Engagement Leaderboard</h2>
-              <p style="font-size:0.8rem;color:var(--ink-2);margin:0.2rem 0 0">
-                Detailed stats per YouTube episode and clip (<span id="yt-table-count">30</span> videos)
+              <h1 class="page-title">Platform Dashboard</h1>
+              <p class="page-subtitle">Editorial overview of The First Seven Years static knowledge library.</p>
+            </div>
+          </div>
+          <div id="dashboard-content"></div>
+        </section>
+
+        <!-- 2. TOPIC MASTER TAB -->
+        <section id="tab-topics" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Topic Master</h1>
+              <p class="page-subtitle">Configure core topic hubs, expert assignments, videos, and hub intro statements.
               </p>
             </div>
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <input type="search" class="form-control" placeholder="Search by video title, topic..." style="max-width:240px;font-size:0.82rem;padding:0.4rem 0.75rem" oninput="ADMIN.handleYouTubeSearch(this.value)">
-              <select class="form-control" style="font-size:0.82rem;padding:0.4rem 0.75rem" onchange="ADMIN.sortYouTubeTable(this.value)">
-                <option value="views_desc">Most Views</option>
-                <option value="retention_desc">Highest Retention %</option>
-                <option value="watch_desc">Most Watch Time</option>
-                <option value="likes_desc">Most Likes</option>
-                <option value="date_desc">Newest First</option>
-              </select>
-            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('topic')">+ New Topic Hub</button>
           </div>
 
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:105px">Thumbnail</th>
-                  <th>Video Title &amp; Guest</th>
-                  <th>Format</th>
-                  <th>Topic Hub</th>
-                  <th>Published</th>
-                  <th>Total Views</th>
-                  <th>Watch Time</th>
-                  <th>Avg Retention</th>
-                  <th>Likes / Ratio</th>
-                  <th style="width:110px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="yt-table-body">
-                <!-- Dynamically populated by ADMIN.renderYouTube() -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. ASK THE DOCTOR INBOX TAB -->
-      <section id="tab-submissions" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Ask the Doctor Submissions</h1>
-            <p class="page-subtitle">Parent inquiries submitted via the public /ask-the-doctor/ form with red-flag detection.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('submission')">+ Add Inbound Question</button>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">Inbound Questions</h2>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Parent / Email</th>
-                  <th>Child Age</th>
-                  <th>Topic(s)</th>
-                  <th>Question</th>
-                  <th>Triage Status</th>
-                  <th style="width:130px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="submissions-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7. EXPERTS DIRECTORY TAB -->
-      <section id="tab-experts" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Experts &amp; Hosts</h1>
-            <p class="page-subtitle">Bios, credentials, and headshots for Dr. Murray Clarke, Bryce Wylde, and guest doctors.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('expert')">+ Add Expert / Host</button>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">Verified Specialists &amp; Hosts</h2>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('experts', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('experts', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('experts', 'draft')">Drafts</button>
-              </div>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:50px">Photo</th>
-                  <th>Name &amp; Slug</th>
-                  <th>Role &amp; Bio</th>
-                  <th>Assigned Q&amp;As</th>
-                  <th>Video Library</th>
-                  <th>Status</th>
-                  <th style="width:90px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="experts-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7. ROLES & USER PERMISSIONS BOARD TAB -->
-      <section id="tab-roles" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Roles &amp; User Permissions Board</h1>
-            <p class="page-subtitle">Granular per-user access control: configure View, Edit, or Hide permissions across all management areas and menu listings.</p>
-          </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('user')">+ Add Team Member</button>
-        </div>
-
-        <!-- 1. Team Members Board Navigator -->
-        <div style="margin-bottom:0.75rem;display:flex;justify-content:space-between;align-items:center">
-          <strong style="color:var(--navy);font-size:0.95rem">Select Team Member Permission Board:</strong>
-          <small style="color:var(--ink-3)">Click a user below to inspect &amp; customize their permissions</small>
-        </div>
-        <div class="user-board-tabs" id="user-board-nav"></div>
-
-        <!-- 2. Active User Permissions Board -->
-        <div class="card" id="user-board-card">
-          <div class="card__header" style="flex-wrap:wrap;gap:1rem">
-            <div id="user-board-header-info"></div>
-            <div class="board-preset-group">
-              <span style="font-size:0.75rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.25rem">Quick Presets:</span>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('super_admin')">👑 Super Admin</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('editor')">✍️ Editor</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('clinical_reviewer')">🩺 Medical Reviewer</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('author')">📝 Author</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('edit')" title="Set all modules to Edit">All Edit</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('view')" title="Set all modules to View">All View</button>
-              <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('hide')" title="Set all modules to Hide">All Hide</button>
-            </div>
-          </div>
-          
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Management Area &amp; Menu Listing</th>
-                  <th style="width:280px">Permission Level</th>
-                  <th style="width:200px">Sidebar &amp; Access Effect</th>
-                </tr>
-              </thead>
-              <tbody id="user-board-modules-body"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 3. Comparative Overview Matrix -->
-        <div class="card" style="margin-top:1.75rem">
-          <div class="card__header">
-            <h2 class="card__title">📊 Organization Permissions Matrix</h2>
-            <div class="card__toolbar">
-              <small style="color:var(--ink-3)">Comparative bird’s-eye view across all team members</small>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table matrix-table">
-              <thead>
-                <tr id="matrix-table-head"></tr>
-              </thead>
-              <tbody id="matrix-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 4. Team Member Roster -->
-        <div class="card" style="margin-top:1.75rem">
-          <div class="card__header">
-            <h2 class="card__title">👥 Team Members Roster</h2>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role Designation</th>
-                  <th>Status</th>
-                  <th>Last Active</th>
-                  <th style="width:110px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="users-table-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8. MENU MANAGEMENT TAB -->
-      <section id="tab-menus" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Menu &amp; Navigation Management</h1>
-            <p class="page-subtitle">Configure primary header navigation bar, mobile menu drawer, and footer directory columns.</p>
-          </div>
-          <div style="display:flex;gap:0.5rem">
-            <button class="btn btn--outline" onclick="ADMIN.toggleMenuPreview()">👁️ Toggle Live Preview</button>
-            <button id="add-menu-btn" class="btn btn--primary" onclick="ADMIN.openModal('menu_header')">+ Add Header Link</button>
-          </div>
-        </div>
-
-        <div class="subtab-bar">
-          <button class="subtab-btn is-active" id="subtab-btn-header-menu" onclick="ADMIN.switchMenuSubtab('header')">
-            🧭 Header Navigation Menu (<span id="header-menu-count">7</span>)
-          </button>
-          <button class="subtab-btn" id="subtab-btn-footer-menu" onclick="ADMIN.switchMenuSubtab('footer')">
-            📑 Footer Directory Columns (<span id="footer-menu-count">18</span>)
-          </button>
-        </div>
-
-        <!-- HEADER MENU VIEW -->
-        <div id="menu-view-header">
           <div class="card">
             <div class="card__header">
-              <h2 class="card__title">Primary Navigation Bar &amp; Mobile Drawer Links</h2>
-              <div class="card__toolbar">
-                <small style="color:var(--ink-3)">Drag handles or up/down controls reorder navigation sequence</small>
+              <div style="display:flex;align-items:center;gap:0.75rem">
+                <h2 class="card__title" style="margin:0">All Topic Hubs</h2>
+                <span class="badge"
+                  style="background:var(--cream-deep);color:var(--ink-2);font-weight:500;font-size:0.75rem">⠿ Drag &amp;
+                  drop to reorder</span>
               </div>
-            </div>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th style="width:70px">Order</th>
-                    <th>Link Label</th>
-                    <th>Destination URL</th>
-                    <th>Mobile Badge</th>
-                    <th>Target Window</th>
-                    <th>Status</th>
-                    <th style="width:110px">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="header-menu-table-body"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- FOOTER MENU VIEW -->
-        <div id="menu-view-footer" style="display:none">
-          <div class="card">
-            <div class="card__header">
-              <h2 class="card__title">Footer Navigation Directory Columns</h2>
               <div class="card__toolbar">
-                <div class="filter-pills" id="footer-col-filters">
-                  <button class="filter-pill is-active" data-col="all" onclick="ADMIN.filterFooterCol('all')">All Columns</button>
-                  <button class="filter-pill" data-col="Topics" onclick="ADMIN.filterFooterCol('Topics')">Topics</button>
-                  <button class="filter-pill" data-col="Library" onclick="ADMIN.filterFooterCol('Library')">Library</button>
-                  <button class="filter-pill" data-col="About & Standards" onclick="ADMIN.filterFooterCol('About & Standards')">About &amp; Standards</button>
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('topics', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('topics', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('topics', 'draft')">Drafts</button>
                 </div>
               </div>
             </div>
@@ -746,399 +273,1036 @@
               <table class="data-table">
                 <thead>
                   <tr>
-                    <th style="width:150px">Column / Category</th>
-                    <th style="width:70px">Order</th>
-                    <th>Link Label</th>
-                    <th>Destination URL</th>
-                    <th>Target</th>
+                    <th style="width:38px;text-align:center" title="Drag to reorder">⠿</th>
+                    <th>Topic &amp; Slug</th>
+                    <th>Assigned Experts</th>
+                    <th>Main Video</th>
+                    <th>Ages</th>
+                    <th>Assigned Content</th>
                     <th>Status</th>
-                    <th style="width:110px">Actions</th>
+                    <th style="width:85px">Actions</th>
                   </tr>
                 </thead>
-                <tbody id="footer-menu-table-body"></tbody>
+                <tbody id="topics-table-body"></tbody>
               </table>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- LIVE MENU VISUAL PREVIEW -->
-        <div class="menu-preview-wrap" id="menu-live-preview-wrap">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
-            <strong style="color:var(--navy);font-size:0.95rem">👁️ Live Navigation Preview</strong>
-            <small style="color:var(--ink-3)">Real-time visual mockup as parents see it</small>
-          </div>
-          
-          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3);margin-bottom:0.35rem">Header Navigation Preview</div>
-          <div class="header-preview-bar">
-            <div style="font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:1rem">The First Seven Years</div>
-            <div class="header-preview-links" id="preview-header-links"></div>
-            <div style="background:var(--mint);color:var(--navy);padding:0.35rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:700">Ask the Doctor</div>
+        <!-- 3. QUESTION & ANSWER TAB -->
+        <section id="tab-answers" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Question &amp; Answer (Parent Answers)</h1>
+              <p class="page-subtitle">Manage clinical parent answers, age suitability tags, and expert attribution.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('answer')">+ Add Question &amp; Answer</button>
           </div>
 
-          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3);margin-top:1.25rem;margin-bottom:0.35rem">Footer Columns Preview</div>
-          <div class="footer-preview-grid" id="preview-footer-grid"></div>
-        </div>
-      </section>
-
-      <!-- 9. PAGE MANAGEMENT TAB -->
-      <section id="tab-pages" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Page Management</h1>
-            <p class="page-subtitle">Create and manage content pages, editorial guidelines, policies, and landing hubs.</p>
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">Parent Answers Library</h2>
+              <div class="card__toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('answers', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('answers', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('answers', 'draft')">Drafts</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Question &amp; Expert</th>
+                    <th>Topic</th>
+                    <th>Source Video</th>
+                    <th>Clinical Status</th>
+                    <th>Publish Status</th>
+                    <th style="width:90px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="answers-table-body"></tbody>
+              </table>
+            </div>
           </div>
-          <button class="btn btn--primary" onclick="ADMIN.openModal('page')">+ Add New Page</button>
-        </div>
+        </section>
 
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__title">Static &amp; Content Pages</h2>
-            <div class="card__toolbar">
-              <div class="filter-pills">
-                <button class="filter-pill is-active" data-filter="all" onclick="ADMIN.handleFilter('pages', 'all')">All</button>
-                <button class="filter-pill" data-filter="published" onclick="ADMIN.handleFilter('pages', 'published')">Published</button>
-                <button class="filter-pill" data-filter="draft" onclick="ADMIN.handleFilter('pages', 'draft')">Drafts</button>
+        <!-- 4. FAQ TAB -->
+        <section id="tab-faqs" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">FAQ Management</h1>
+              <p class="page-subtitle">Frequently asked questions appearing on the public /faq/ directory.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('faq')">+ Add FAQ</button>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">General &amp; Clinical FAQs</h2>
+              <div class="card__toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('faqs', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('faqs', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('faqs', 'draft')">Drafts</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Question &amp; Answer</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                    <th style="width:90px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="faqs-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. VIDEO MANAGEMENT TAB -->
+        <section id="tab-videos" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Video Management</h1>
+              <p class="page-subtitle">Manage YouTube full episodes and short topic clips.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap">
+              <button class="btn btn--outline" onclick="ADMIN.openGlobalDisclaimerModal()">⚖️ Global YouTube
+                Disclaimer</button>
+              <button class="btn btn--outline" onclick="ADMIN.switchTab('youtube')">📊 View YouTube Report
+                &rarr;</button>
+              <button class="btn btn--primary" onclick="ADMIN.openModal('video')">+ Add Video Clip / Episode</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">YouTube Channel Library</h2>
+              <div class="card__toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('videos', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('videos', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('videos', 'draft')">Drafts</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width:85px">Thumbnail</th>
+                    <th>Title &amp; Expert</th>
+                    <th>Linked Q&amp;As</th>
+                    <th>Topics</th>
+                    <th>Status</th>
+                    <th style="width:90px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="videos-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5B. YOUTUBE REPORTS & ANALYTICS TAB -->
+        <section id="tab-youtube" class="tab-view" hidden>
+          <div class="page-header yt-report-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.35rem">
+                <h1 class="page-title" style="margin:0">▶️ YouTube Reports &amp; Analytics</h1>
+                <span class="yt-sync-pill"><span class="pulse-dot"></span> Live Channel Sync</span>
+              </div>
+              <p class="page-subtitle" style="margin:0">
+                Real-time video views, audience retention, subscriber growth, and episode performance for
+                <a href="https://www.youtube.com/@thefirstsevenyears" target="_blank" rel="noopener"
+                  style="color:var(--navy);font-weight:700;text-decoration:underline">@thefirstsevenyears ↗</a>
+              </p>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap">
+              <button class="btn btn--outline btn--sm" id="btn-refresh-yt" onclick="ADMIN.refreshYouTubeStats()">
+                🔄 Refresh Live Stats
+              </button>
+              <button class="btn btn--outline btn--sm" onclick="ADMIN.exportYouTubeCSV()">
+                📥 Export CSV Report
+              </button>
+              <a href="https://studio.youtube.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm">
+                ↗ YouTube Studio
+              </a>
+            </div>
+          </div>
+
+          <!-- Time Range Selector & Type Filter Bar -->
+          <div
+            style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;background:var(--cream);padding:0.75rem 1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;border:1px solid var(--line)">
+            <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap">
+              <span
+                style="font-size:0.78rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.3rem">Time
+                Range:</span>
+              <button class="filter-pill" data-yt-range="7d" onclick="ADMIN.filterYouTubeRange('7d')">Last 7
+                Days</button>
+              <button class="filter-pill is-active" data-yt-range="28d" onclick="ADMIN.filterYouTubeRange('28d')">Last
+                28 Days</button>
+              <button class="filter-pill" data-yt-range="90d" onclick="ADMIN.filterYouTubeRange('90d')">Last 90
+                Days</button>
+              <button class="filter-pill" data-yt-range="ytd" onclick="ADMIN.filterYouTubeRange('ytd')">Year to
+                Date</button>
+              <button class="filter-pill" data-yt-range="all" onclick="ADMIN.filterYouTubeRange('all')">All
+                Time</button>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap">
+              <span
+                style="font-size:0.78rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.3rem">Format:</span>
+              <button class="filter-pill is-active" data-yt-type="all" onclick="ADMIN.filterYouTubeType('all')">All
+                Content</button>
+              <button class="filter-pill" data-yt-type="episode" onclick="ADMIN.filterYouTubeType('episode')">Full
+                Episodes</button>
+              <button class="filter-pill" data-yt-type="clip" onclick="ADMIN.filterYouTubeType('clip')">Shorts &amp;
+                Clips</button>
+            </div>
+          </div>
+
+          <!-- 6 Core Channel KPI Cards -->
+          <div class="yt-kpi-grid">
+            <div class="yt-kpi-card" style="--kpi-accent:#ff0000">
+              <div class="yt-kpi-header">
+                <span>Total Video Views</span>
+                <span>👁️</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-views">284,520</div>
+              <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +18.4%</span> vs prior period</div>
+            </div>
+
+            <div class="yt-kpi-card" style="--kpi-accent:#3b82f6">
+              <div class="yt-kpi-header">
+                <span>Total Watch Time</span>
+                <span>⏱️</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-watch">14,830h</div>
+              <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +12.2%</span> total stream hours</div>
+            </div>
+
+            <div class="yt-kpi-card" style="--kpi-accent:#10b981">
+              <div class="yt-kpi-header">
+                <span>Channel Subscribers</span>
+                <span>👥</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-subs">18,450</div>
+              <div class="yt-kpi-sub"><span class="yt-trend-up">↑ +1,240</span> new subscribers</div>
+            </div>
+
+            <div class="yt-kpi-card" style="--kpi-accent:#f59e0b">
+              <div class="yt-kpi-header">
+                <span>Avg Retention Rate</span>
+                <span>📊</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-retention">62.4%</div>
+              <div class="yt-kpi-sub">Avg duration: <strong>4m 18s</strong></div>
+            </div>
+
+            <div class="yt-kpi-card" style="--kpi-accent:#8b5cf6">
+              <div class="yt-kpi-header">
+                <span>Impression CTR</span>
+                <span>🎯</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-ctr">8.4%</div>
+              <div class="yt-kpi-sub">From <strong>2.1M</strong> impressions</div>
+            </div>
+
+            <div class="yt-kpi-card" style="--kpi-accent:#ec4899">
+              <div class="yt-kpi-header">
+                <span>Questions Generated</span>
+                <span>💬</span>
+              </div>
+              <div class="yt-kpi-val" id="yt-kpi-questions">4,320</div>
+              <div class="yt-kpi-sub">Views driving /ask-the-doctor/</div>
+            </div>
+          </div>
+
+          <!-- Visual Analytics Grid: 30-Day Views Trajectory & Audience Retention -->
+          <div class="yt-charts-grid">
+            <!-- Views Trajectory Chart -->
+            <div class="yt-chart-card">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div>
+                  <h3 class="yt-chart-title">📈 Daily Views &amp; Watch-Time Trajectory</h3>
+                  <p class="yt-chart-desc">Daily view velocity over selected period with episode publish spikes</p>
+                </div>
+                <span class="badge badge--published">Active Momentum</span>
+              </div>
+              <div id="yt-views-chart" style="height:220px;width:100%;margin-top:0.5rem">
+                <!-- Dynamically populated SVG Chart -->
+              </div>
+            </div>
+
+            <!-- Traffic Sources & Demographics -->
+            <div class="yt-chart-card">
+              <h3 class="yt-chart-title">🧭 Traffic Sources &amp; Discovery</h3>
+              <p class="yt-chart-desc">How parents discover The First Seven Years episodes</p>
+              <div class="yt-source-list" id="yt-sources-list">
+                <!-- Dynamically populated progress bars -->
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Page Title &amp; Route</th>
-                  <th>Template Layout</th>
-                  <th>SEO Description &amp; Excerpt</th>
-                  <th>Last Updated</th>
-                  <th>Status</th>
-                  <th style="width:110px">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="pages-table-body"></tbody>
-            </table>
+
+          <!-- Video Performance Leaderboard & Table -->
+          <div class="card">
+            <div class="card__header"
+              style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+              <div>
+                <h2 class="card__title">🎬 Video Performance &amp; Engagement Leaderboard</h2>
+                <p style="font-size:0.8rem;color:var(--ink-2);margin:0.2rem 0 0">
+                  Detailed stats per YouTube episode and clip (<span id="yt-table-count">30</span> videos)
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.75rem">
+                <input type="search" class="form-control" placeholder="Search by video title, topic..."
+                  style="max-width:240px;font-size:0.82rem;padding:0.4rem 0.75rem"
+                  oninput="ADMIN.handleYouTubeSearch(this.value)">
+                <select class="form-control" style="font-size:0.82rem;padding:0.4rem 0.75rem"
+                  onchange="ADMIN.sortYouTubeTable(this.value)">
+                  <option value="views_desc">Most Views</option>
+                  <option value="retention_desc">Highest Retention %</option>
+                  <option value="watch_desc">Most Watch Time</option>
+                  <option value="likes_desc">Most Likes</option>
+                  <option value="date_desc">Newest First</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width:105px">Thumbnail</th>
+                    <th>Video Title &amp; Guest</th>
+                    <th>Format</th>
+                    <th>Topic Hub</th>
+                    <th>Published</th>
+                    <th>Total Views</th>
+                    <th>Watch Time</th>
+                    <th>Avg Retention</th>
+                    <th>Likes / Ratio</th>
+                    <th style="width:110px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="yt-table-body">
+                  <!-- Dynamically populated by ADMIN.renderYouTube() -->
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 10. ENHANCED SETTINGS & SECURITY TAB -->
-      <section id="tab-settings" class="tab-view" hidden>
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Settings &amp; Platform Security</h1>
-            <p class="page-subtitle">Configure security controls, password credentials, site metadata, and theme styling.</p>
+        <!-- 6. ASK THE DOCTOR INBOX TAB -->
+        <section id="tab-submissions" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Ask the Doctor Submissions</h1>
+              <p class="page-subtitle">Parent inquiries submitted via the public /ask-the-doctor/ form with red-flag
+                detection.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('submission')">+ Add Inbound Question</button>
           </div>
-          <button id="save-settings-btn" class="btn btn--primary" onclick="ADMIN.saveSettings()">Save Settings</button>
-        </div>
 
-        <!-- Subtab pills: Brand Colors / Security / Site Info -->
-        <div class="subtab-bar">
-          <button class="subtab-btn is-active" id="settings-tab-brand" onclick="ADMIN.switchSettingsSubtab('brand')">
-            🎨 Brand Colors
-          </button>
-          <button class="subtab-btn" id="settings-tab-security" onclick="ADMIN.switchSettingsSubtab('security')">
-            🔑 Password
-          </button>
-          <button class="subtab-btn" id="settings-tab-general" onclick="ADMIN.switchSettingsSubtab('general')">
-            🌐 Site &amp; Organization Info
-          </button>
-        </div>
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">Inbound Questions</h2>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Parent / Email</th>
+                    <th>Child Age</th>
+                    <th>Topic(s)</th>
+                    <th>Question</th>
+                    <th>Triage Status</th>
+                    <th style="width:130px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="submissions-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
-        <!-- VIEW 1: BRAND COLORS -->
-        <div id="settings-view-brand">
-          <div class="color-settings-grid">
-          <!-- Left: Inputs -->
-          <div style="display:flex;flex-direction:column;gap:1.5rem">
+        <!-- 7. EXPERTS DIRECTORY TAB -->
+        <section id="tab-experts" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Experts &amp; Hosts</h1>
+              <p class="page-subtitle">Bios, credentials, and headshots for Dr. Murray Clarke, Bryce Wylde, and guest
+                doctors.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('expert')">+ Add Expert / Host</button>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">Verified Specialists &amp; Hosts</h2>
+              <div class="card__toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('experts', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('experts', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('experts', 'draft')">Drafts</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width:50px">Photo</th>
+                    <th>Name &amp; Slug</th>
+                    <th>Role &amp; Bio</th>
+                    <th>Assigned Q&amp;As</th>
+                    <th>Video Library</th>
+                    <th>Status</th>
+                    <th style="width:90px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="experts-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. ROLES & USER PERMISSIONS BOARD TAB -->
+        <section id="tab-roles" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Roles &amp; User Permissions Board</h1>
+              <p class="page-subtitle">Granular per-user access control: configure View, Edit, or Hide permissions
+                across all management areas and menu listings.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('user')">+ Add Team Member</button>
+          </div>
+
+          <!-- 1. Team Members Board Navigator -->
+          <div style="margin-bottom:0.75rem;display:flex;justify-content:space-between;align-items:center">
+            <strong style="color:var(--navy);font-size:0.95rem">Select Team Member Permission Board:</strong>
+            <small style="color:var(--ink-3)">Click a user below to inspect &amp; customize their permissions</small>
+          </div>
+          <div class="user-board-tabs" id="user-board-nav"></div>
+
+          <!-- 2. Active User Permissions Board -->
+          <div class="card" id="user-board-card">
+            <div class="card__header" style="flex-wrap:wrap;gap:1rem">
+              <div id="user-board-header-info"></div>
+              <div class="board-preset-group">
+                <span
+                  style="font-size:0.75rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;margin-right:0.25rem">Quick
+                  Presets:</span>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('super_admin')">👑 Super
+                  Admin</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('editor')">✍️
+                  Editor</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('clinical_reviewer')">🩺
+                  Medical Reviewer</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.applyUserPreset('author')">📝
+                  Author</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('edit')"
+                  title="Set all modules to Edit">All Edit</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('view')"
+                  title="Set all modules to View">All View</button>
+                <button type="button" class="board-preset-btn" onclick="ADMIN.batchSetPermissions('hide')"
+                  title="Set all modules to Hide">All Hide</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Management Area &amp; Menu Listing</th>
+                    <th style="width:280px">Permission Level</th>
+                    <th style="width:200px">Sidebar &amp; Access Effect</th>
+                  </tr>
+                </thead>
+                <tbody id="user-board-modules-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. Comparative Overview Matrix -->
+          <div class="card" style="margin-top:1.75rem">
+            <div class="card__header">
+              <h2 class="card__title">📊 Organization Permissions Matrix</h2>
+              <div class="card__toolbar">
+                <small style="color:var(--ink-3)">Comparative bird’s-eye view across all team members</small>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table matrix-table">
+                <thead>
+                  <tr id="matrix-table-head"></tr>
+                </thead>
+                <tbody id="matrix-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 4. Team Member Roster -->
+          <div class="card" style="margin-top:1.75rem">
+            <div class="card__header">
+              <h2 class="card__title">👥 Team Members Roster</h2>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role Designation</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                    <th style="width:110px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. MENU MANAGEMENT TAB -->
+        <section id="tab-menus" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Menu &amp; Navigation Management</h1>
+              <p class="page-subtitle">Configure primary header navigation bar, mobile menu drawer, and footer directory
+                columns.</p>
+            </div>
+            <div style="display:flex;gap:0.5rem">
+              <button class="btn btn--outline" onclick="ADMIN.toggleMenuPreview()">👁️ Toggle Live Preview</button>
+              <button id="add-menu-btn" class="btn btn--primary" onclick="ADMIN.openModal('menu_header')">+ Add Header
+                Link</button>
+            </div>
+          </div>
+
+          <div class="subtab-bar">
+            <button class="subtab-btn is-active" id="subtab-btn-header-menu" onclick="ADMIN.switchMenuSubtab('header')">
+              🧭 Header Navigation Menu (<span id="header-menu-count">7</span>)
+            </button>
+            <button class="subtab-btn" id="subtab-btn-footer-menu" onclick="ADMIN.switchMenuSubtab('footer')">
+              📑 Footer Directory Columns (<span id="footer-menu-count">18</span>)
+            </button>
+          </div>
+
+          <!-- HEADER MENU VIEW -->
+          <div id="menu-view-header">
             <div class="card">
-              <div class="card__header"><h2 class="card__title">🎨 Brand Color Palette</h2></div>
-              <div style="padding:1.5rem;display:flex;flex-direction:column;gap:0.85rem">
-                
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Primary Navy</strong>
-                    <span>Headers, main text, borders, dark cards</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-navy" value="#2B3C56">
-                    <input type="text" id="color-text-navy" value="#2B3C56">
-                  </div>
+              <div class="card__header">
+                <h2 class="card__title">Primary Navigation Bar &amp; Mobile Drawer Links</h2>
+                <div class="card__toolbar">
+                  <small style="color:var(--ink-3)">Drag handles or up/down controls reorder navigation sequence</small>
                 </div>
-
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Accent Mint</strong>
-                    <span>CTA buttons, active links, badges</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-mint" value="#A6D6B0">
-                    <input type="text" id="color-text-mint" value="#A6D6B0">
-                  </div>
-                </div>
-
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Warm Cream Base</strong>
-                    <span>Page background canvas</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-cream" value="#FBF9F5">
-                    <input type="text" id="color-text-cream" value="#FBF9F5">
-                  </div>
-                </div>
-
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Accent Peach</strong>
-                    <span>Highlight pill &amp; card accent</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-peach" value="#FAD7C4">
-                    <input type="text" id="color-text-peach" value="#FAD7C4">
-                  </div>
-                </div>
-
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Accent Butter</strong>
-                    <span>Card tint &amp; subtle fill</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-butter" value="#FBE7AC">
-                    <input type="text" id="color-text-butter" value="#FBE7AC">
-                  </div>
-                </div>
-
-                <div class="color-picker-item">
-                  <div class="color-picker-item__info">
-                    <strong>Accent Lilac</strong>
-                    <span>Focus badge &amp; tag accent</span>
-                  </div>
-                  <div class="color-picker-input-wrap">
-                    <input type="color" id="color-lilac" value="#DDD6F5">
-                    <input type="text" id="color-text-lilac" value="#DDD6F5">
-                  </div>
-                </div>
-
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:70px">Order</th>
+                      <th>Link Label</th>
+                      <th>Destination URL</th>
+                      <th>Mobile Badge</th>
+                      <th>Target Window</th>
+                      <th>Status</th>
+                      <th style="width:110px">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="header-menu-table-body"></tbody>
+                </table>
               </div>
             </div>
           </div>
 
-          <!-- Right: Live Interactive Theme Preview Mockup -->
-          <div>
-            <div class="card" style="position:sticky;top:5rem">
-              <div class="card__header"><h2 class="card__title">👁️ Live Component Preview</h2></div>
-              <div style="padding:1.5rem">
-                <div id="theme-preview" class="theme-preview-card">
-                  <div class="preview-header-mock">
-                    <span class="mock-brand">The First Seven Years</span>
-                    <button class="preview-cta-mock">Ask the Doctor</button>
+          <!-- FOOTER MENU VIEW -->
+          <div id="menu-view-footer" style="display:none">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="card__title">Footer Navigation Directory Columns</h2>
+                <div class="card__toolbar">
+                  <div class="filter-pills" id="footer-col-filters">
+                    <button class="filter-pill is-active" data-col="all" onclick="ADMIN.filterFooterCol('all')">All
+                      Columns</button>
+                    <button class="filter-pill" data-col="Topics"
+                      onclick="ADMIN.filterFooterCol('Topics')">Topics</button>
+                    <button class="filter-pill" data-col="Library"
+                      onclick="ADMIN.filterFooterCol('Library')">Library</button>
+                    <button class="filter-pill" data-col="About & Standards"
+                      onclick="ADMIN.filterFooterCol('About & Standards')">About &amp; Standards</button>
                   </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:150px">Column / Category</th>
+                      <th style="width:70px">Order</th>
+                      <th>Link Label</th>
+                      <th>Destination URL</th>
+                      <th>Target</th>
+                      <th>Status</th>
+                      <th style="width:110px">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="footer-menu-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
-                  <div class="preview-body-mock">
-                    <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3)">Parent Answer</span>
-                    <h3>Is my child’s eczema really a gut problem?</h3>
-                    <p style="font-size:0.85rem;color:var(--ink-2)">Partly — and it is worth knowing why. Research increasingly links skin barriers to early microbiome health.</p>
-                    <div class="preview-chips-mock">
-                      <span id="chip-preview-1" class="preview-chip">Skin &amp; eczema</span>
-                      <span id="chip-preview-2" class="preview-chip">Nutrition</span>
-                      <span id="chip-preview-3" class="preview-chip">Allergies</span>
+          <!-- LIVE MENU VISUAL PREVIEW -->
+          <div class="menu-preview-wrap" id="menu-live-preview-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+              <strong style="color:var(--navy);font-size:0.95rem">👁️ Live Navigation Preview</strong>
+              <small style="color:var(--ink-3)">Real-time visual mockup as parents see it</small>
+            </div>
+
+            <div
+              style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3);margin-bottom:0.35rem">
+              Header Navigation Preview</div>
+            <div class="header-preview-bar">
+              <div style="font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:1rem">The First Seven
+                Years</div>
+              <div class="header-preview-links" id="preview-header-links"></div>
+              <div
+                style="background:var(--mint);color:var(--navy);padding:0.35rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:700">
+                Ask the Doctor</div>
+            </div>
+
+            <div
+              style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3);margin-top:1.25rem;margin-bottom:0.35rem">
+              Footer Columns Preview</div>
+            <div class="footer-preview-grid" id="preview-footer-grid"></div>
+          </div>
+        </section>
+
+        <!-- 9. PAGE MANAGEMENT TAB -->
+        <section id="tab-pages" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Page Management</h1>
+              <p class="page-subtitle">Create and manage content pages, editorial guidelines, policies, and landing
+                hubs.</p>
+            </div>
+            <button class="btn btn--primary" onclick="ADMIN.openModal('page')">+ Add New Page</button>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <h2 class="card__title">Static &amp; Content Pages</h2>
+              <div class="card__toolbar">
+                <div class="filter-pills">
+                  <button class="filter-pill is-active" data-filter="all"
+                    onclick="ADMIN.handleFilter('pages', 'all')">All</button>
+                  <button class="filter-pill" data-filter="published"
+                    onclick="ADMIN.handleFilter('pages', 'published')">Published</button>
+                  <button class="filter-pill" data-filter="draft"
+                    onclick="ADMIN.handleFilter('pages', 'draft')">Drafts</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Page Title &amp; Route</th>
+                    <th>Template Layout</th>
+                    <th>SEO Description &amp; Excerpt</th>
+                    <th>Last Updated</th>
+                    <th>Status</th>
+                    <th style="width:110px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="pages-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. ENHANCED SETTINGS & SECURITY TAB -->
+        <section id="tab-settings" class="tab-view" hidden>
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Settings &amp; Platform Security</h1>
+              <p class="page-subtitle">Configure security controls, password credentials, site metadata, and theme
+                styling.</p>
+            </div>
+            <button id="save-settings-btn" class="btn btn--primary" onclick="ADMIN.saveSettings()">Save
+              Settings</button>
+          </div>
+
+          <!-- Subtab pills: Brand Colors / Security / Site Info -->
+          <div class="subtab-bar">
+            <button class="subtab-btn is-active" id="settings-tab-brand" onclick="ADMIN.switchSettingsSubtab('brand')">
+              🎨 Brand Colors
+            </button>
+            <button class="subtab-btn" id="settings-tab-security" onclick="ADMIN.switchSettingsSubtab('security')">
+              🔑 Password
+            </button>
+            <button class="subtab-btn" id="settings-tab-general" onclick="ADMIN.switchSettingsSubtab('general')">
+              🌐 Site &amp; Organization Info
+            </button>
+          </div>
+
+          <!-- VIEW 1: BRAND COLORS -->
+          <div id="settings-view-brand">
+            <div class="color-settings-grid">
+              <!-- Left: Inputs -->
+              <div style="display:flex;flex-direction:column;gap:1.5rem">
+                <div class="card">
+                  <div class="card__header">
+                    <h2 class="card__title">🎨 Brand Color Palette</h2>
+                  </div>
+                  <div style="padding:1.5rem;display:flex;flex-direction:column;gap:0.85rem">
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Primary Navy</strong>
+                        <span>Headers, main text, borders, dark cards</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-navy" value="#2B3C56">
+                        <input type="text" id="color-text-navy" value="#2B3C56">
+                      </div>
+                    </div>
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Accent Mint</strong>
+                        <span>CTA buttons, active links, badges</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-mint" value="#A6D6B0">
+                        <input type="text" id="color-text-mint" value="#A6D6B0">
+                      </div>
+                    </div>
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Warm Cream Base</strong>
+                        <span>Page background canvas</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-cream" value="#FBF9F5">
+                        <input type="text" id="color-text-cream" value="#FBF9F5">
+                      </div>
+                    </div>
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Accent Peach</strong>
+                        <span>Highlight pill &amp; card accent</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-peach" value="#FAD7C4">
+                        <input type="text" id="color-text-peach" value="#FAD7C4">
+                      </div>
+                    </div>
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Accent Butter</strong>
+                        <span>Card tint &amp; subtle fill</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-butter" value="#FBE7AC">
+                        <input type="text" id="color-text-butter" value="#FBE7AC">
+                      </div>
+                    </div>
+
+                    <div class="color-picker-item">
+                      <div class="color-picker-item__info">
+                        <strong>Accent Lilac</strong>
+                        <span>Focus badge &amp; tag accent</span>
+                      </div>
+                      <div class="color-picker-input-wrap">
+                        <input type="color" id="color-lilac" value="#DDD6F5">
+                        <input type="text" id="color-text-lilac" value="#DDD6F5">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Live Interactive Theme Preview Mockup -->
+              <div>
+                <div class="card" style="position:sticky;top:5rem">
+                  <div class="card__header">
+                    <h2 class="card__title">👁️ Live Component Preview</h2>
+                  </div>
+                  <div style="padding:1.5rem">
+                    <div id="theme-preview" class="theme-preview-card">
+                      <div class="preview-header-mock">
+                        <span class="mock-brand">The First Seven Years</span>
+                        <button class="preview-cta-mock">Ask the Doctor</button>
+                      </div>
+
+                      <div class="preview-body-mock">
+                        <span
+                          style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--ink-3)">Parent
+                          Answer</span>
+                        <h3>Is my child’s eczema really a gut problem?</h3>
+                        <p style="font-size:0.85rem;color:var(--ink-2)">Partly — and it is worth knowing why. Research
+                          increasingly links skin barriers to early microbiome health.</p>
+                        <div class="preview-chips-mock">
+                          <span id="chip-preview-1" class="preview-chip">Skin &amp; eczema</span>
+                          <span id="chip-preview-2" class="preview-chip">Nutrition</span>
+                          <span id="chip-preview-3" class="preview-chip">Allergies</span>
+                        </div>
+                      </div>
+
+                      <div style="font-size:0.8rem;color:var(--ink-3);text-align:center">
+                        Adjust colors on the left to see live UI preview updates in real time.
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  <div style="font-size:0.8rem;color:var(--ink-3);text-align:center">
-                    Adjust colors on the left to see live UI preview updates in real time.
+          <!-- VIEW 2: PASSWORD -->
+          <div id="settings-view-security" style="display:none">
+            <div class="card" style="max-width:640px">
+              <div class="card__header" style="display:flex;align-items:center;justify-content:space-between">
+                <h2 class="card__title">🔑 Change Password</h2>
+                <div style="font-size:0.8rem;color:var(--ink-3)">
+                  Last updated: <strong id="pwd-last-changed" style="color:var(--navy)">Today at 12:00 PM</strong>
+                </div>
+              </div>
+              <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem">
+                <div class="form-group">
+                  <label>Current Password *</label>
+                  <div class="pwd-input-wrap">
+                    <input type="password" class="form-control" id="pwd-current" placeholder="Enter current password">
+                    <button type="button" class="pwd-toggle-btn"
+                      onclick="ADMIN.togglePwdVisibility('pwd-current', this)">👁️</button>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label>New Password *</label>
+                  <div class="pwd-input-wrap">
+                    <input type="password" class="form-control" id="pwd-new" placeholder="Enter new strong password"
+                      oninput="ADMIN.checkPasswordStrength(this.value)">
+                    <button type="button" class="pwd-toggle-btn"
+                      onclick="ADMIN.togglePwdVisibility('pwd-new', this)">👁️</button>
+                  </div>
+                  <div class="pwd-strength-bar">
+                    <div id="pwd-strength-fill" class="pwd-strength-fill"></div>
+                  </div>
+                  <small id="pwd-strength-text"
+                    style="font-size:0.75rem;color:var(--ink-3);display:block;margin-top:0.25rem">Password strength:
+                    None</small>
+                  <ul class="pwd-checklist">
+                    <li id="pwd-rule-len">○ At least 8 characters</li>
+                    <li id="pwd-rule-upper">○ 1 uppercase letter</li>
+                    <li id="pwd-rule-lower">○ 1 lowercase letter</li>
+                    <li id="pwd-rule-num">○ 1 number or special char</li>
+                  </ul>
+                </div>
+
+                <div class="form-group">
+                  <label>Confirm New Password *</label>
+                  <div class="pwd-input-wrap">
+                    <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm new password">
+                    <button type="button" class="pwd-toggle-btn"
+                      onclick="ADMIN.togglePwdVisibility('pwd-confirm', this)">👁️</button>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn--primary" style="margin-top:0.5rem;align-self:flex-start"
+                  onclick="ADMIN.handlePasswordChange()">Update Password</button>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- VIEW 3: SITE & ORGANIZATION INFO -->
+          <div id="settings-view-general" style="display:none">
+            <div class="card">
+              <div class="card__header">
+                <h2 class="card__title">🌐 Site Metadata &amp; Organization Profile</h2>
+              </div>
+              <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Site Title</label>
+                    <input class="form-control" id="setting-title" value="The First Seven Years">
+                  </div>
+                  <div class="form-group">
+                    <label>Tagline</label>
+                    <input class="form-control" id="setting-tagline" value="Expert answers for parents of kids 0–7">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Canonical Domain</label>
+                    <input class="form-control" id="setting-domain" value="https://thefirstsevenyears.com">
+                  </div>
+                  <div class="form-group">
+                    <label>Contact Email</label>
+                    <input class="form-control" id="setting-email" value="hello@thefirstsevenyears.com"
+                      placeholder="hello@thefirstsevenyears.com">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Support Phone / Inquiries</label>
+                    <input class="form-control" id="setting-phone" value="+1 (800) 555-0177"
+                      placeholder="+1 (800) 555-0177">
+                  </div>
+                  <div class="form-group">
+                    <label>Office / Production Location</label>
+                    <input class="form-control" id="setting-location" value="Santa Barbara, CA"
+                      placeholder="City, State / Region">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Twitter / X Profile</label>
+                    <input class="form-control" id="setting-twitter" value="https://twitter.com/firstsevenyears"
+                      placeholder="https://twitter.com/firstsevenyears">
+                  </div>
+                  <div class="form-group">
+                    <label>Instagram Handle / Profile</label>
+                    <input class="form-control" id="setting-instagram" value="https://instagram.com/thefirstsevenyears"
+                      placeholder="https://instagram.com/thefirstsevenyears">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>LinkedIn Company / Profile</label>
+                    <input class="form-control" id="setting-linkedin"
+                      value="https://linkedin.com/company/thefirstsevenyears"
+                      placeholder="https://linkedin.com/company/thefirstsevenyears">
+                  </div>
+                  <div class="form-group">
+                    <label>YouTube Channel URL</label>
+                    <input class="form-control" id="setting-yt" value="https://www.youtube.com/@thefirstsevenyears">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Copyright Notice</label>
+                  <input class="form-control" id="setting-copyright"
+                    value="© 2026 The First Seven Years. All rights reserved.">
+                </div>
+
+                <div class="form-group">
+                  <label>Medical Disclaimer Notice</label>
+                  <textarea class="form-control" id="setting-disclaimer"
+                    rows="3">Educational content only. Not individual medical advice. Consult your pediatrician.</textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>YouTube Medical &amp; Educational Disclaimer (Common Default)</label>
+                  <textarea class="form-control" id="setting-youtube-disclaimer" rows="4"
+                    placeholder="YouTube disclaimer displayed on all video episodes by default...">The information provided in The First Seven Years is for educational and informational purposes only and is not intended as a substitute for advice from your pediatrician or other healthcare professional. Always consult with your doctor regarding any medical concerns or health conditions. The views expressed by our guests are their own and do not necessarily reflect the official policy or position of The First Seven Years.</textarea>
+                  <small>Common YouTube disclaimer applied to the Video Library (/episodes/) and all video episodes,
+                    unless overridden per video.</small>
+                </div>
+
+                <button type="button" class="btn btn--primary" style="align-self:flex-start"
+                  onclick="ADMIN.saveSettings()">Save Organization Info</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
+    </main>
+  </div>
 
-        <!-- VIEW 2: PASSWORD -->
-        <div id="settings-view-security" style="display:none">
-          <div class="card" style="max-width:640px">
-            <div class="card__header" style="display:flex;align-items:center;justify-content:space-between">
-              <h2 class="card__title">🔑 Change Password</h2>
-              <div style="font-size:0.8rem;color:var(--ink-3)">
-                Last updated: <strong id="pwd-last-changed" style="color:var(--navy)">Today at 12:00 PM</strong>
-              </div>
-            </div>
-            <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem">
-              <div class="form-group">
-                <label>Current Password *</label>
-                <div class="pwd-input-wrap">
-                  <input type="password" class="form-control" id="pwd-current" placeholder="Enter current password">
-                  <button type="button" class="pwd-toggle-btn" onclick="ADMIN.togglePwdVisibility('pwd-current', this)">👁️</button>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>New Password *</label>
-                <div class="pwd-input-wrap">
-                  <input type="password" class="form-control" id="pwd-new" placeholder="Enter new strong password" oninput="ADMIN.checkPasswordStrength(this.value)">
-                  <button type="button" class="pwd-toggle-btn" onclick="ADMIN.togglePwdVisibility('pwd-new', this)">👁️</button>
-                </div>
-                <div class="pwd-strength-bar">
-                  <div id="pwd-strength-fill" class="pwd-strength-fill"></div>
-                </div>
-                <small id="pwd-strength-text" style="font-size:0.75rem;color:var(--ink-3);display:block;margin-top:0.25rem">Password strength: None</small>
-                <ul class="pwd-checklist">
-                  <li id="pwd-rule-len">○ At least 8 characters</li>
-                  <li id="pwd-rule-upper">○ 1 uppercase letter</li>
-                  <li id="pwd-rule-lower">○ 1 lowercase letter</li>
-                  <li id="pwd-rule-num">○ 1 number or special char</li>
-                </ul>
-              </div>
-
-              <div class="form-group">
-                <label>Confirm New Password *</label>
-                <div class="pwd-input-wrap">
-                  <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm new password">
-                  <button type="button" class="pwd-toggle-btn" onclick="ADMIN.togglePwdVisibility('pwd-confirm', this)">👁️</button>
-                </div>
-              </div>
-
-              <button type="button" class="btn btn--primary" style="margin-top:0.5rem;align-self:flex-start" onclick="ADMIN.handlePasswordChange()">Update Password</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- VIEW 3: SITE & ORGANIZATION INFO -->
-        <div id="settings-view-general" style="display:none">
-          <div class="card">
-            <div class="card__header">
-              <h2 class="card__title">🌐 Site Metadata &amp; Organization Profile</h2>
-            </div>
-            <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Site Title</label>
-                  <input class="form-control" id="setting-title" value="The First Seven Years">
-                </div>
-                <div class="form-group">
-                  <label>Tagline</label>
-                  <input class="form-control" id="setting-tagline" value="Expert answers for parents of kids 0–7">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Canonical Domain</label>
-                  <input class="form-control" id="setting-domain" value="https://thefirstsevenyears.com">
-                </div>
-                <div class="form-group">
-                  <label>Contact Email</label>
-                  <input class="form-control" id="setting-email" value="hello@thefirstsevenyears.com" placeholder="hello@thefirstsevenyears.com">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Support Phone / Inquiries</label>
-                  <input class="form-control" id="setting-phone" value="+1 (800) 555-0177" placeholder="+1 (800) 555-0177">
-                </div>
-                <div class="form-group">
-                  <label>Office / Production Location</label>
-                  <input class="form-control" id="setting-location" value="Santa Barbara, CA" placeholder="City, State / Region">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Twitter / X Profile</label>
-                  <input class="form-control" id="setting-twitter" value="https://twitter.com/firstsevenyears" placeholder="https://twitter.com/firstsevenyears">
-                </div>
-                <div class="form-group">
-                  <label>Instagram Handle / Profile</label>
-                  <input class="form-control" id="setting-instagram" value="https://instagram.com/thefirstsevenyears" placeholder="https://instagram.com/thefirstsevenyears">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>LinkedIn Company / Profile</label>
-                  <input class="form-control" id="setting-linkedin" value="https://linkedin.com/company/thefirstsevenyears" placeholder="https://linkedin.com/company/thefirstsevenyears">
-                </div>
-                <div class="form-group">
-                  <label>YouTube Channel URL</label>
-                  <input class="form-control" id="setting-yt" value="https://www.youtube.com/@thefirstsevenyears">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Copyright Notice</label>
-                <input class="form-control" id="setting-copyright" value="© 2026 The First Seven Years. All rights reserved.">
-              </div>
-
-              <div class="form-group">
-                <label>Medical Disclaimer Notice</label>
-                <textarea class="form-control" id="setting-disclaimer" rows="3">Educational content only. Not individual medical advice. Consult your pediatrician.</textarea>
-              </div>
-
-              <div class="form-group">
-                <label>YouTube Medical &amp; Educational Disclaimer (Common Default)</label>
-                <textarea class="form-control" id="setting-youtube-disclaimer" rows="4" placeholder="YouTube disclaimer displayed on all video episodes by default...">The information provided in The First Seven Years is for educational and informational purposes only and is not intended as a substitute for advice from your pediatrician or other healthcare professional. Always consult with your doctor regarding any medical concerns or health conditions. The views expressed by our guests are their own and do not necessarily reflect the official policy or position of The First Seven Years.</textarea>
-                <small>Common YouTube disclaimer applied to the Video Library (/episodes/) and all video episodes, unless overridden per video.</small>
-              </div>
-
-              <button type="button" class="btn btn--primary" style="align-self:flex-start" onclick="ADMIN.saveSettings()">Save Organization Info</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-</div>
-
-<!-- UNIVERSAL MODAL DIALOG -->
-<div id="form-modal" class="modal">
-  <div class="modal__backdrop" onclick="ADMIN.closeModal()"></div>
-  <div class="modal__dialog modal__dialog--lg">
-    <div class="modal__header">
-      <h2 id="modal-title" class="modal__title">Form</h2>
-      <button class="modal__close" onclick="ADMIN.closeModal()">&times;</button>
-    </div>
-    <div id="modal-body" class="modal__body"></div>
-    <div class="modal__footer">
-      <button class="btn btn--outline" onclick="ADMIN.closeModal()">Cancel</button>
-      <button class="btn btn--primary" onclick="ADMIN.saveModalForm()">Save Changes</button>
+  <!-- UNIVERSAL MODAL DIALOG -->
+  <div id="form-modal" class="modal">
+    <div class="modal__backdrop" onclick="ADMIN.closeModal()"></div>
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__header">
+        <h2 id="modal-title" class="modal__title">Form</h2>
+        <button class="modal__close" onclick="ADMIN.closeModal()">&times;</button>
+      </div>
+      <div id="modal-body" class="modal__body"></div>
+      <div class="modal__footer">
+        <button class="btn btn--outline" onclick="ADMIN.closeModal()">Cancel</button>
+        <button class="btn btn--primary" onclick="ADMIN.saveModalForm()">Save Changes</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- PROTOTYPE LOGIN OVERLAY -->
-<div id="login-overlay" class="login-overlay" style="display:none">
-  <div class="login-modal-card">
-    <div class="login-modal-header">
-      <div class="sidebar__logo" style="color:var(--navy);font-size:1.35rem;font-weight:700">The First Seven Years</div>
-      <div style="margin-top:0.4rem"><span class="sidebar__badge">CMS PORTAL</span></div>
-      <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-top:0.75rem">Sign In to CMS</h2>
-      <p style="font-size:0.88rem;color:var(--ink-2);margin-top:0.25rem">Enter your username and password to proceed.</p>
-    </div>
-
-    <div id="login-overlay-alert" style="display:none;padding:0.6rem 0.8rem;border-radius:6px;font-size:0.85rem;margin-bottom:1rem"></div>
-
-    <form onsubmit="ADMIN.submitOverlayLogin(event)">
-      <div class="form-group" style="margin-bottom:0.85rem">
-        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Username</label>
-        <input type="text" id="overlay-login-username" class="form-control" placeholder="admin" value="admin" required style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
+  <!-- PROTOTYPE LOGIN OVERLAY -->
+  <div id="login-overlay" class="login-overlay" style="display:none">
+    <div class="login-modal-card">
+      <div class="login-modal-header">
+        <div class="sidebar__logo" style="color:var(--navy);font-size:1.35rem;font-weight:700">The First Seven Years
+        </div>
+        <div style="margin-top:0.4rem"><span class="sidebar__badge">CMS PORTAL</span></div>
+        <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-top:0.75rem">Sign In to CMS
+        </h2>
+        <p style="font-size:0.88rem;color:var(--ink-2);margin-top:0.25rem">Enter your username and password to proceed.
+        </p>
       </div>
-      <div class="form-group" style="margin-bottom:1rem">
-        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Password</label>
-        <input type="password" id="overlay-login-pwd" class="form-control" placeholder="admin@999999" value="admin@999999" required style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
-      </div>
-      <button type="submit" class="btn btn--primary" style="width:100%;padding:0.75rem;justify-content:center;font-weight:600">Sign In →</button>
-    </form>
 
-    <div style="margin-top:1.25rem;text-align:center">
-      <a href="/" target="_blank" style="font-size:0.84rem;color:var(--navy);text-decoration:none;font-weight:500">← Return to Public Website</a>
+      <div id="login-overlay-alert"
+        style="display:none;padding:0.6rem 0.8rem;border-radius:6px;font-size:0.85rem;margin-bottom:1rem"></div>
+
+      <form onsubmit="ADMIN.submitOverlayLogin(event)">
+        <div class="form-group" style="margin-bottom:0.85rem">
+          <label
+            style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Username</label>
+          <input type="text" id="overlay-login-username" class="form-control" placeholder="admin" value="admin" required
+            style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
+        </div>
+        <div class="form-group" style="margin-bottom:1rem">
+          <label
+            style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Password</label>
+          <input type="password" id="overlay-login-pwd" class="form-control" placeholder="admin@999999"
+            value="admin@999999" required
+            style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
+        </div>
+        <button type="submit" class="btn btn--primary"
+          style="width:100%;padding:0.75rem;justify-content:center;font-weight:600">Sign In →</button>
+      </form>
+
+      <div style="margin-top:1.25rem;text-align:center">
+        <a href="/" target="_blank" style="font-size:0.84rem;color:var(--navy);text-decoration:none;font-weight:500">←
+          Return to Public Website</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- TOAST CONTAINER -->
-<div id="toast-container" class="toast-container"></div>
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
 
-<script src="/admin/admin.js"></script>
+  <script src="/admin/admin.js"></script>
 </body>
+
 </html>

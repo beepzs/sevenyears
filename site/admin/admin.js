@@ -2057,7 +2057,10 @@
     const curObj = state.data.users?.find(u => u.id === state.currentUser);
     if (curObj) state.currentRole = curObj.role;
 
+    const initialTab = getTabFromUrl();
+    state.currentTab = initialTab;
     renderApp();
+    switchTab(initialTab, false);
   }
 
   // Prototype Authentication & Login / Logout Methods
@@ -2237,8 +2240,39 @@
     }
   }
 
-  // Navigation tab switching
-  function switchTab(tabId) {
+  const VALID_TABS = [
+    'dashboard', 'topics', 'answers', 'faqs', 'videos',
+    'youtube', 'submissions', 'experts', 'pages', 'menus',
+    'roles', 'settings'
+  ];
+
+  function getTabFromUrl() {
+    // 1. Path routing (e.g. /admin/faqs or /admin/faqs/)
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const segments = path.split('/').filter(Boolean);
+    const adminIdx = segments.indexOf('admin');
+    if (adminIdx !== -1 && segments.length > adminIdx + 1) {
+      const seg = segments[adminIdx + 1].toLowerCase();
+      if (VALID_TABS.includes(seg)) return seg;
+    }
+
+    // 2. Hash routing (e.g. #faqs, #/faqs, #tab-faqs)
+    if (window.location.hash) {
+      const hash = window.location.hash.replace(/^#\/?(tab-)?/, '').toLowerCase();
+      if (VALID_TABS.includes(hash)) return hash;
+    }
+
+    // 3. Query string (e.g. ?tab=faqs or ?section=faqs)
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get('tab') || params.get('section') || '').toLowerCase();
+    if (VALID_TABS.includes(q)) return q;
+
+    return 'dashboard';
+  }
+
+  // Navigation tab switching with full browser history and URL routing
+  function switchTab(tabId, pushState = true) {
+    if (!VALID_TABS.includes(tabId)) tabId = 'dashboard';
     if (!canView(tabId)) {
       showToast('Permission restricted: You do not have view access to this section', 'error');
       return;
@@ -2250,6 +2284,25 @@
     $$('.tab-view').forEach(el => {
       el.hidden = el.id !== `tab-${tabId}`;
     });
+
+    if (pushState) {
+      const targetPath = tabId === 'dashboard' ? '/admin/' : `/admin/${tabId}`;
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      const cleanTarget = targetPath.replace(/\/+$/, '');
+      if (currentPath !== cleanTarget) {
+        try {
+          history.pushState({ tab: tabId }, '', targetPath);
+        } catch (e) {
+          window.location.hash = tabId;
+        }
+      }
+    }
+
+    const def = MODULE_DEFS.find(m => m.id === tabId);
+    if (def) {
+      document.title = `${def.name} — Admin CMS — The First Seven Years`;
+    }
+
     renderCurrentTab();
     applyRoleGates();
   }
@@ -6940,7 +6993,27 @@
 
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
+    // Early tab selection to prevent visual flash before API finishes
+    const earlyTab = getTabFromUrl();
+    if (earlyTab && earlyTab !== 'dashboard') {
+      state.currentTab = earlyTab;
+      $$('.nav-item').forEach(el => el.classList.toggle('is-active', el.dataset.tab === earlyTab));
+      $$('.tab-view').forEach(el => { el.hidden = el.id !== `tab-${earlyTab}`; });
+    }
+
     loadData();
+
+    // Listen for browser Back/Forward navigation
+    window.addEventListener('popstate', (e) => {
+      const tab = (e.state && e.state.tab) || getTabFromUrl();
+      switchTab(tab, false);
+    });
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', () => {
+      const tab = getTabFromUrl();
+      switchTab(tab, false);
+    });
 
     // Setup color preview listeners
     const colorKeys = ['navy', 'mint', 'cream', 'peach', 'butter', 'lilac', 'soft_green', 'sky'];

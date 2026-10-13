@@ -1,3 +1,4 @@
+const F7U=u=>{if(!u||u[0]!=='/'||u[1]==='/')return u;const m=u.slice(1).match(/^([^?#]*)(.*)$/);let p=m[1];if(p===''||p.endsWith('/'))p+='index.html';return (window.F7_ROOT||'/')+p+m[2];};
 /* The First Seven Years — site behaviour. No framework, no dependencies. */
 (() => {
   document.documentElement.classList.remove('no-js');
@@ -16,8 +17,6 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    // enable the slide only after first paint, so font swaps on load don't animate it
-    window.addEventListener('load', () => requestAnimationFrame(() => bar.classList.add('is-ready')));
   }
 
   /* ---------- mobile drawer ---------- */
@@ -45,7 +44,7 @@
   $$('[data-focus-search]').forEach(b => b.addEventListener('click', () => {
     const input = $('.qsearch input');
     if (input) { input.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); setTimeout(() => input.focus(), 350); }
-    else location.href = '/search/';
+    else location.href = F7U('/search/');
   }));
 
   /* ---------- question search: rotating placeholder + typeahead ---------- */
@@ -93,8 +92,8 @@
 
       active = -1;
       list.innerHTML = scored.length
-        ? scored.map((r, i) => `<li role="presentation"><a role="option" id="${list.id}-o${i}" href="${r.d.u}"><span class="kind kind--${r.d.k}">${labels[r.d.k]}</span><span class="t">${r.d.t}</span><span class="s">${r.d.s || ''}</span></a></li>`).join('')
-        : `<li class="qsearch__empty">No answer yet for “${q.replace(/[<>&"]/g, '')}”. <a class="link-arrow" href="/ask-the-doctor/?q=${encodeURIComponent(q)}">Ask Dr. Murray instead</a></li>`;
+        ? scored.map((r, i) => `<li role="presentation"><a role="option" id="${list.id}-o${i}" href="${F7U(r.d.u)}"><span class="kind kind--${r.d.k}">${labels[r.d.k]}</span><span class="t">${r.d.t}</span><span class="s">${r.d.s || ''}</span></a></li>`).join('')
+        : `<li class="qsearch__empty">No answer yet for “${q.replace(/[<>&"]/g, '')}”. <a class="link-arrow" href="${F7U('/ask-the-doctor/?q='+encodeURIComponent(q))}">Ask Dr. Murray instead</a></li>`;
       list.hidden = false;
       input.setAttribute('aria-expanded', 'true');
     };
@@ -215,66 +214,124 @@
       el.setAttribute('aria-invalid', text ? 'true' : 'false');
       err.textContent = text;
     };
-
-    const captchaCheck = $('#g-recaptcha-check', ask);
-    if (captchaCheck) {
-      captchaCheck.addEventListener('change', () => {
-        const cErr = $('#captcha-err');
-        if (cErr && captchaCheck.checked) cErr.textContent = '';
-      });
-    }
-
     ask.addEventListener('submit', e => {
       e.preventDefault();
       let first = null;
-      const checkedTopics = [...$$('input[name="topics"]:checked', ask)].map(c => c.value);
-      const email = $('#email', ask), consent = $('#consent', ask);
+      const topic = $('#topic', ask), email = $('#email', ask), consent = $('#consent', ask);
       const checks = [
         [qField, qField.value.trim().length < 20 ? 'Tell us a little more — at least 20 characters helps the doctor answer well.' : ''],
+        [topic, !topic.value ? 'Choose the closest topic.' : ''],
         [email, !email.checkValidity() || !email.value ? 'Enter an email so we can tell you when it’s answered.' : ''],
         [consent, !consent.checked ? 'Please confirm you’ve read this before sending.' : ''],
       ];
       if (!$('input[name="age"]:checked', ask)) { $('#age-err').textContent = 'Select your child’s age.'; first = $('input[name="age"]', ask); }
       else $('#age-err').textContent = '';
-
-      if (checkedTopics.length === 0) {
-        $('#topic-err').textContent = 'Please select at least one topic.';
-        if (!first) first = $('input[name="topics"]', ask);
-      } else {
-        $('#topic-err').textContent = '';
-      }
-
       checks.forEach(([el, t]) => { setErr(el, t); if (t && !first) first = el; });
-
-      const captcha = $('#g-recaptcha-check', ask);
-      if (captcha && !captcha.checked) {
-        const cErr = $('#captcha-err');
-        if (cErr) cErr.textContent = 'Please check the box to confirm you are not a robot.';
-        if (!first) first = captcha;
-      } else {
-        const cErr = $('#captcha-err');
-        if (cErr) cErr.textContent = '';
-      }
-
       if (first) { first.focus(); return; }
-      const ageChecked = $('input[name="age"]:checked', ask);
-      const fname = $('#fname', ask);
-      fetch('/api/ask-doctor', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          topic: checkedTopics[0] || 'general',
-          topics: checkedTopics,
-          email: email.value,
-          parent_name: fname ? fname.value.trim() : '',
-          child_age: ageChecked ? (ageChecked.parentElement?.textContent?.trim() || ageChecked.value) : '',
-          question: qField.value
-        })
-      }).catch(() => {});
       ask.hidden = true;
       const ok = $('#ask-success'); ok.hidden = false; ok.focus();
-      if (window.gtag) gtag('event', 'ask_doctor_submit', { topic: checkedTopics[0] || 'general', topics: checkedTopics });
+      if (window.gtag) gtag('event', 'ask_doctor_submit', { topic: topic.value });
     });
   }
+})();
 
+/* episode row: previous / next arrows */
+(function () {
+  document.querySelectorAll('[data-ep-scroll]').forEach(function (btn) {
+    var row = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!row) return;
+    var dir = Number(btn.getAttribute('data-ep-scroll'));
+    var update = function () {
+      var max = row.scrollWidth - row.clientWidth - 2;
+      btn.disabled = dir < 0 ? row.scrollLeft <= 2 : row.scrollLeft >= max;
+    };
+    btn.addEventListener('click', function () {
+      row.scrollBy({ left: dir * row.clientWidth * 0.85, behavior: 'smooth' });
+    });
+    row.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+})();
+
+/* motion: staggered lists + stat count-up (skipped for reduced-motion users) */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var lists = document.querySelectorAll('.topic-index, .answers, .ep-row, .trust, .doctor__facts, .ages__tabs, .experts, .ep-grid, .principles, .journey, .disclose, .a11y-list, .book__facts, .steps, .related, .filters');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('stg-in'); io.unobserve(e.target);
+      if (e.target.classList.contains('doctor__facts')) countUp(e.target);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  lists.forEach(function (list) {
+    Array.prototype.forEach.call(list.children, function (child, i) { child.style.setProperty('--i', Math.min(i, 10)); });
+    list.classList.add('stg'); io.observe(list);
+  });
+  function countUp(box) {
+    box.querySelectorAll('b').forEach(function (b) {
+      var m = b.textContent.match(/^(\d+)(\D*)$/); if (!m) return;   /* "116+" or "13"; leaves "0–7" alone */
+      var end = +m[1], suffix = m[2], t0 = null, dur = 1100;
+      function step(t) {
+        if (!t0) t0 = t; var p = Math.min((t - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+        b.textContent = Math.round(end * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      b.textContent = '0' + suffix; requestAnimationFrame(step);
+    });
+  }
+})();
+
+
+/* video thumbnails: if a thumbnail can't load, show the plain card colour instead of a broken-image icon */
+(function () {
+  function hide(img) { img.style.visibility = 'hidden'; }
+  document.addEventListener('error', function (e) {
+    var t = e.target; if (t && t.tagName === 'IMG' && t.closest('.ep-card__thumb, .yt')) hide(t);
+  }, true);
+  document.querySelectorAll('.ep-card__thumb img, .yt img').forEach(function (img) {
+    if (img.complete && img.naturalWidth === 0) hide(img);
+  });
+})();
+
+/* motion: soft fade-up for section headings and panels on every page, and gentle parallax on the homepage doctor photo */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var els = document.querySelectorAll('.section-head, .a11y-band, .about-intro__cols, .layout-2 > *, .profile__img');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { if (!el.classList.contains('reveal')) { el.classList.add('reveal'); io.observe(el); } });
+
+  var doc = document.querySelector('.doctor__photo');
+  if (!doc) return;
+  var ticking = false;
+  function move() {
+    ticking = false;
+    var r = doc.getBoundingClientRect(), vh = window.innerHeight;
+    if (r.bottom < 0 || r.top > vh) return;
+    var p = (r.top + r.height / 2 - vh / 2) / vh;          /* -0.5 … 0.5 while on screen */
+    doc.style.setProperty('--py', (p * -36).toFixed(1) + 'px');
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(move); } }, { passive: true });
+  move();
+})();
+
+/* age picker: move the little pointer on the answers panel under the chosen age */
+(function () {
+  var tabs = document.querySelector('.ages__tabs');
+  if (!tabs) return;
+  function place() {
+    var t = tabs.querySelector('[aria-selected="true"]'), pn = document.querySelector('.ages__panel:not([hidden])');
+    if (!t || !pn) return;
+    var x = t.getBoundingClientRect().left + t.offsetWidth / 2 - pn.getBoundingClientRect().left - 12;
+    document.querySelectorAll('.ages__panel').forEach(function (p) { p.style.setProperty('--nx', x + 'px'); });
+  }
+  tabs.addEventListener('click', function () { requestAnimationFrame(place); });
+  tabs.addEventListener('keyup', function () { requestAnimationFrame(place); });
+  window.addEventListener('resize', place);
+  place();
 })();
