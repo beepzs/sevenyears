@@ -7,3 +7,4 @@ node_modules/
 deploy-public/
 deploy-v2/
 __pycache__/
+site/

@@ -45,12 +45,7 @@ def icon(name, label=None):
 
 def logo(cls="", size=None):
     style = f' style="--logo:{size}px"' if size else ""
-<<<<<<< HEAD
     return f'<img class="logo {cls}"{style} src="/assets/img/logo.jpg" alt="The First Seven Years" width="160" height="160">'
-=======
-    return (f'<span class="logo {cls}"{style} aria-hidden="true"><span class="l-sm">The First</span>'
-            f'<span>Seven</span><span>Years</span><span class="l-sq">{"<i></i>" * 7}</span></span>')
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
 
 # --------------------------------------------------------------------------
 # CONTENT MODEL
@@ -453,11 +448,7 @@ def footer():
             cols.setdefault(c, []).append(it)
         col_htmls = []
         for cname, citems in cols.items():
-<<<<<<< HEAD
-            links = "".join(f'<li><a href="{esc(x["url"])}"{' target="_blank" rel="noopener"' if x.get("target") == "_blank" else ""}>{esc(x["label"])}</a></li>' for x in citems)
-=======
             links = "".join(f'<li><a href="{esc(x["url"])}"' + (' target="_blank" rel="noopener"' if x.get("target") == "_blank" else '') + f'>{esc(x["label"])}</a></li>' for x in citems)
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
             col_htmls.append(f'<div><h2>{esc(cname)}</h2><ul>{links}</ul></div>')
         cols_rendered = "".join(col_htmls)
     else:
@@ -540,10 +531,7 @@ def page(path, title, desc, body, ld=None, active=None, home=False, og_img=None,
 <link rel="preconnect" href="https://i.ytimg.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..800;1,400..600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..600,0..100,0..1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/main.css">
-<<<<<<< HEAD
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-=======
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
 {color_override}
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary">
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)}</script>
@@ -1091,10 +1079,7 @@ def build_ask():
     cr = [("Home", "/"), ("Ask the Doctor", None)]
     ages = "".join(f'<input type="radio" name="age" id="age{i}" value="{i}"{" aria-describedby=age-err" if i==0 else ""}><label for="age{i}">{i if i else "<1"}</label>' for i in range(8))
     topic_pills = "".join(f'<input type="checkbox" name="topics" id="top-{t[0]}" value="{t[0]}"><label for="top-{t[0]}">{t[1]}</label>' for t in TOPICS)
-<<<<<<< HEAD
     topic_pills += '<input type="checkbox" name="topics" id="top-other" value="other"><label for="top-other">Something else</label>'
-=======
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     body = f"""<div class="page-head page-head--tint" style="--tint:var(--peach-soft)"><div class="wrap">{crumbs(cr)}
 <span class="eyebrow">Free · no account needed</span>
 <h1 style="margin-top:.6rem">Ask the Doctor</h1>
@@ -1107,14 +1092,11 @@ def build_ask():
     <fieldset class="field"><legend>Topics <span class="muted">(select all that apply)</span></legend>
       <div class="topic-pick">{topic_pills}</div>
       <span class="err" id="topic-err" aria-live="polite"></span></fieldset>
-<<<<<<< HEAD
     <div class="field" id="topic-other-wrap" hidden>
       <label for="topic-other">Please specify your topic</label>
       <input type="text" id="topic-other" name="topic_other" placeholder="What topic does your question relate to?" aria-describedby="topic-other-err">
       <span class="err" id="topic-other-err" aria-live="polite"></span>
     </div>
-=======
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     <div class="field"><label for="q">Your question</label>
       <span class="hint" id="q-hint">Share what you’ve noticed and what you’ve tried. Please don’t include your child’s full name.</span>
       <textarea id="q" name="question" maxlength="1200" aria-describedby="q-hint q-err"></textarea>
@@ -1129,12 +1111,8 @@ def build_ask():
     <span class="err" id="consent-err" aria-live="polite"></span>
     <label class="check"><input type="checkbox" name="newsletter"><span>Also send me one good answer every Sunday.</span></label>
     <div class="g-recaptcha-card">
-<<<<<<< HEAD
       <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
       <div class="g-recaptcha-box" id="g-recaptcha-fallback">
-=======
-      <div class="g-recaptcha-box">
->>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
         <label class="g-recaptcha-label" for="g-recaptcha-check">
           <input type="checkbox" id="g-recaptcha-check" name="recaptcha">
           <span class="g-recaptcha-checkbox" aria-hidden="true"></span>
