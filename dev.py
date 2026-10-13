@@ -18,7 +18,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.resolve()
 SITE_DIR = BASE_DIR / "site"
+<<<<<<< HEAD
 HTML_DIR = BASE_DIR / "html"
+=======
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
 BUILD_SCRIPT = BASE_DIR / "build.py"
 
 
@@ -71,6 +74,7 @@ RED_FLAG_KEYWORDS = [
 ]
 
 
+<<<<<<< HEAD
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(SITE_DIR), **kwargs)
@@ -87,6 +91,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return str(target)
         return super().translate_path(path)
 
+=======
+class DevServerHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=str(SITE_DIR), **kwargs)
+
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     def log_message(self, format, *args):
         sys.stderr.write(f"[{self.log_date_time_string()}] {format % args}\n")
 
@@ -147,6 +157,22 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     pass
             self.send_json({"status": "error", "message": "Not authenticated"}, status=401)
             return
+<<<<<<< HEAD
+=======
+        # SPA fallback: serve /admin/index.html for any /admin/* path
+        # that doesn't correspond to a real file (e.g. /admin/topics on refresh)
+        if clean_path.startswith("/admin/") and clean_path not in ("/admin/admin.css", "/admin/admin.js"):
+            admin_index = SITE_DIR / "admin" / "index.html"
+            if admin_index.exists():
+                content = admin_index.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
         super().do_GET()
 
     def do_POST(self):
@@ -313,6 +339,7 @@ def main():
     watcher_thread.start()
 
     server_address = (args.host, args.port)
+<<<<<<< HEAD
     httpd = http.server.ThreadingHTTPServer(server_address, Handler)
 
     print(f"\n=======================================================")
@@ -322,6 +349,15 @@ def main():
     print(f"  HTML Folder: http://localhost:{args.port}/html/")
     print(f"  Watching: build.py (auto-rebuilding on save)")
     print(f"  Serving: {SITE_DIR} (and /html from {HTML_DIR})")
+=======
+    httpd = http.server.ThreadingHTTPServer(server_address, DevServerHandler)
+
+    print(f"\n=======================================================")
+    print(f"  The First Seven Years — Local Dev Server")
+    print(f"  URL: http://localhost:{args.port}")
+    print(f"  Watching: build.py (auto-rebuilding on save)")
+    print(f"  Serving: {SITE_DIR}")
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     print(f"  Press Ctrl+C to stop.")
     print(f"=======================================================\n")
 

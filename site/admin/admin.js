@@ -2012,7 +2012,10 @@
     }
 
     state.data = loaded;
+<<<<<<< HEAD
     state.currentTab = detectCurrentPage();
+=======
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
 
     // Ensure super_admin users have edit permissions for pages and menus
     (state.data.users || []).forEach(u => {
@@ -2058,7 +2061,14 @@
     const curObj = state.data.users?.find(u => u.id === state.currentUser);
     if (curObj) state.currentRole = curObj.role;
 
+<<<<<<< HEAD
     renderApp();
+=======
+    const initialTab = getTabFromUrl();
+    state.currentTab = initialTab;
+    renderApp();
+    switchTab(initialTab, false);
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
   }
 
   // Prototype Authentication & Login / Logout Methods
@@ -2238,6 +2248,7 @@
     }
   }
 
+<<<<<<< HEAD
   // Detect active page from body dataset or URL route
   function detectCurrentPage() {
     const pageAttr = document.body?.dataset?.page;
@@ -2251,10 +2262,46 @@
 
   // Navigation tab switching (supports both multi-page routing and in-page SPA toggling)
   function switchTab(tabId) {
+=======
+  const VALID_TABS = [
+    'dashboard', 'topics', 'answers', 'faqs', 'videos',
+    'youtube', 'submissions', 'experts', 'pages', 'menus',
+    'roles', 'settings'
+  ];
+
+  function getTabFromUrl() {
+    // 1. Path routing (e.g. /admin/faqs or /admin/faqs/)
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const segments = path.split('/').filter(Boolean);
+    const adminIdx = segments.indexOf('admin');
+    if (adminIdx !== -1 && segments.length > adminIdx + 1) {
+      const seg = segments[adminIdx + 1].toLowerCase();
+      if (VALID_TABS.includes(seg)) return seg;
+    }
+
+    // 2. Hash routing (e.g. #faqs, #/faqs, #tab-faqs)
+    if (window.location.hash) {
+      const hash = window.location.hash.replace(/^#\/?(tab-)?/, '').toLowerCase();
+      if (VALID_TABS.includes(hash)) return hash;
+    }
+
+    // 3. Query string (e.g. ?tab=faqs or ?section=faqs)
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get('tab') || params.get('section') || '').toLowerCase();
+    if (VALID_TABS.includes(q)) return q;
+
+    return 'dashboard';
+  }
+
+  // Navigation tab switching with full browser history and URL routing
+  function switchTab(tabId, pushState = true) {
+    if (!VALID_TABS.includes(tabId)) tabId = 'dashboard';
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     if (!canView(tabId)) {
       showToast('Permission restricted: You do not have view access to this section', 'error');
       return;
     }
+<<<<<<< HEAD
     const isMultiPage = !window.location.protocol.startsWith('file:') && !window.location.pathname.includes('standalone.html') && !window.location.pathname.includes('prototype.html');
     const targetUrl = tabId === 'dashboard' ? '/admin/' : `/admin/${tabId}/`;
 
@@ -2264,6 +2311,8 @@
       return;
     }
 
+=======
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     state.currentTab = tabId;
     $$('.nav-item').forEach(el => {
       el.classList.toggle('is-active', el.dataset.tab === tabId);
@@ -2271,6 +2320,28 @@
     $$('.tab-view').forEach(el => {
       el.hidden = el.id !== `tab-${tabId}`;
     });
+<<<<<<< HEAD
+=======
+
+    if (pushState) {
+      const targetPath = tabId === 'dashboard' ? '/admin/' : `/admin/${tabId}`;
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      const cleanTarget = targetPath.replace(/\/+$/, '');
+      if (currentPath !== cleanTarget) {
+        try {
+          history.pushState({ tab: tabId }, '', targetPath);
+        } catch (e) {
+          window.location.hash = tabId;
+        }
+      }
+    }
+
+    const def = MODULE_DEFS.find(m => m.id === tabId);
+    if (def) {
+      document.title = `${def.name} — Admin CMS — The First Seven Years`;
+    }
+
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     renderCurrentTab();
     applyRoleGates();
   }
@@ -2280,6 +2351,7 @@
     if (!state.data) return;
     updateSidebarCounts();
     renderAlerts();
+<<<<<<< HEAD
 
     // Ensure the tab-view for currentTab is not hidden on dedicated pages
     const curTabEl = $(`#tab-${state.currentTab}`);
@@ -2290,6 +2362,8 @@
       el.classList.toggle('is-active', el.dataset.tab === state.currentTab);
     });
 
+=======
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     renderCurrentTab();
     applyRoleGates();
   }
@@ -6971,8 +7045,33 @@
 
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
     loadData();
 
+=======
+    // Early tab selection to prevent visual flash before API finishes
+    const earlyTab = getTabFromUrl();
+    if (earlyTab && earlyTab !== 'dashboard') {
+      state.currentTab = earlyTab;
+      $$('.nav-item').forEach(el => el.classList.toggle('is-active', el.dataset.tab === earlyTab));
+      $$('.tab-view').forEach(el => { el.hidden = el.id !== `tab-${earlyTab}`; });
+    }
+
+    loadData();
+
+    // Listen for browser Back/Forward navigation
+    window.addEventListener('popstate', (e) => {
+      const tab = (e.state && e.state.tab) || getTabFromUrl();
+      switchTab(tab, false);
+    });
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', () => {
+      const tab = getTabFromUrl();
+      switchTab(tab, false);
+    });
+
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
     // Setup color preview listeners
     const colorKeys = ['navy', 'mint', 'cream', 'peach', 'butter', 'lilac', 'soft_green', 'sky'];
     colorKeys.forEach(k => {

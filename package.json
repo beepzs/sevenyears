@@ -4,8 +4,14 @@
   "private": true,
   "description": "The First Seven Years — website prototype",
   "scripts": {
+<<<<<<< HEAD
     "dev": "python3 dev.py",
     "build": "python3 build.py",
     "start": "python3 -m http.server 8477 --directory site"
+=======
+    "dev": "python dev.py",
+    "build": "python3 build.py || python build.py",
+    "start": "python -m http.server 8477 --directory site"
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
   }
 }

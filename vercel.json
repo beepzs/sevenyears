@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
   "buildCommand": "python3 build.py",
+=======
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "python3 build.py || python build.py",
+>>>>>>> fe0bcab547943f6d16a1d6afc96becba158800f2
   "outputDirectory": "site"
 }

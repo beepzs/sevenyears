@@ -1,0 +1,7 @@
+# Ignore local development files and non-production prototypes from Vercel
+dev.py
+deploy/
+deploy.sh
+admin-prototype.html
+login-prototype.html
+__pycache__/
