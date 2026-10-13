@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard — The First Seven Years Admin CMS</title>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body data-page="dashboard">
+
+<div class="admin-shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="/admin/" class="sidebar__brand">
+      <div class="sidebar__logo">The First Seven Years</div>
+      <span class="sidebar__badge">CMS</span>
+    </a>
+
+    <div class="sidebar__nav">
+      <span class="sidebar__section-title">Overview</span>
+      <a href="/admin/" class="nav-item is-active" data-tab="dashboard" onclick="ADMIN.switchTab('dashboard')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+        <span>Dashboard</span>
+      </a>
+
+      <span class="sidebar__section-title">Content Management</span>
+      <a href="/admin/topics/" class="nav-item" data-tab="topics" onclick="ADMIN.switchTab('topics')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+        <span>Topic Master</span>
+        <span class="pill-count" data-count="topics">13</span>
+      </a>
+
+      <a href="/admin/answers/" class="nav-item" data-tab="answers" onclick="ADMIN.switchTab('answers')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Question &amp; Answer</span>
+        <span class="pill-count" data-count="answers">10</span>
+      </a>
+
+      <a href="/admin/faqs/" class="nav-item" data-tab="faqs" onclick="ADMIN.switchTab('faqs')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        <span>FAQ Management</span>
+        <span class="pill-count" data-count="faqs">5</span>
+      </a>
+
+      <a href="/admin/videos/" class="nav-item" data-tab="videos" onclick="ADMIN.switchTab('videos')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="2" y="5" rx="2"/></svg>
+        <span>Video Library</span>
+        <span class="pill-count" data-count="videos">30</span>
+      </a>
+
+      <a href="/admin/youtube/" class="nav-item" data-tab="youtube" onclick="ADMIN.switchTab('youtube')">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span>YouTube Reports</span>
+        <span class="pill-count" data-count="youtube" style="background:#ff0000;color:#fff">LIVE</span>
+      </a>
+
+      <a href="/admin/submissions/" class="nav-item" data-tab="submissions" onclick="ADMIN.switchTab('submissions')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <span>Ask the Doctor Inbox</span>
+        <span class="pill-count" data-count="submissions" style="background:var(--mint);color:var(--navy-deep)">3</span>
+      </a>
+
+      <a href="/admin/experts/" class="nav-item" data-tab="experts" onclick="ADMIN.switchTab('experts')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Experts &amp; Hosts</span>
+        <span class="pill-count" data-count="experts">6</span>
+      </a>
+
+      <a href="/admin/pages/" class="nav-item" data-tab="pages" onclick="ADMIN.switchTab('pages')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Page Management</span>
+        <span class="pill-count" data-count="pages">4</span>
+      </a>
+
+      <span class="sidebar__section-title">Navigation &amp; Structure</span>
+      <a href="/admin/menus/" class="nav-item" data-tab="menus" onclick="ADMIN.switchTab('menus')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <span>Menu Management</span>
+        <span class="pill-count" data-count="menus">25</span>
+      </a>
+
+      <span class="sidebar__section-title">Administration</span>
+      <a href="/admin/roles/" class="nav-item" data-tab="roles" onclick="ADMIN.switchTab('roles')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Roles &amp; Permissions</span>
+        <span class="pill-count" data-count="users">4</span>
+      </a>
+
+      <a href="/admin/settings/" class="nav-item" data-tab="settings" onclick="ADMIN.switchTab('settings')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings &amp; Security</span>
+      </a>
+    </div>
+
+    <div class="sidebar__footer" id="sidebar-footer">
+      <div class="sidebar__user-card">
+        <div class="sidebar__user-info">
+          <span class="sidebar__user-name" id="sidebar-user-name">Dr. Murray Clarke</span>
+          <span class="sidebar__user-role" id="sidebar-user-role">Super Admin</span>
+        </div>
+        <button class="sidebar__logout-btn" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
+          <span>Log Out</span> 🚪
+        </button>
+      </div>
+      <a href="/" target="_blank"><span>↗</span> View Public Website</a>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <div class="topbar__search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" placeholder="Quick search topics, Q&amp;As, videos..." oninput="ADMIN.handleSearch(this.value)">
+        </div>
+      </div>
+
+      <div class="topbar__right">
+        <!-- Live User & Role Switcher -->
+        <div class="role-badge-box">
+          <label for="user-select">Viewing as:</label>
+          <select id="user-select" onchange="ADMIN.handleUserChange(this.value)">
+            <option value="usr-1">👑 Dr. Murray Clarke (Super Admin)</option>
+            <option value="usr-2">✍️ Bryce Wylde (Editor)</option>
+            <option value="usr-3">🩺 Dr. Elisa Song (Medical Reviewer)</option>
+            <option value="usr-4">📝 Sarah Jenkins (Author)</option>
+          </select>
+        </div>
+
+        <!-- Notification Alerts Bell & Dropdown -->
+        <div class="notif-bell-wrap" id="notif-bell-container">
+          <button class="notif-bell-btn" id="topbar-notif-btn" onclick="ADMIN.toggleNotifDropdown()" title="Notifications &amp; Alerts" aria-label="Notifications">
+            <span>🔔</span>
+            <span class="notif-bell-badge" id="topbar-notif-count">4</span>
+          </button>
+
+          <div class="notif-dropdown-menu" id="topbar-notif-dropdown" style="display:none">
+            <div class="notif-dropdown-header">
+              <div style="display:flex;align-items:center;gap:0.4rem">
+                <strong style="font-size:0.85rem;color:var(--navy)">🔔 Platform Alerts</strong>
+                <span class="badge badge--redflag" id="notif-badge-sub" style="font-size:0.68rem;padding:0.15rem 0.45rem">4 Pending</span>
+              </div>
+              <button class="btn btn--link btn--sm" onclick="ADMIN.markAllNotifsRead()" style="font-size:0.75rem;padding:0;color:var(--navy);text-decoration:underline;background:none;border:none;cursor:pointer">Mark all read</button>
+            </div>
+            <div class="notif-dropdown-body" id="topbar-notif-items">
+              <!-- Live items populated by admin.js -->
+            </div>
+            <div class="notif-dropdown-footer">
+              <button class="btn btn--sm btn--outline" style="width:100%;font-size:0.78rem" onclick="ADMIN.switchTab('submissions'); ADMIN.closeNotifDropdown();">
+                📥 View Inbound Submissions &amp; Triage
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logout Action -->
+        <button class="btn btn--outline btn--sm btn--logout" onclick="ADMIN.logout()" title="Sign out of Admin CMS">
+          🚪 Log Out
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+      <!-- 1. DASHBOARD TAB -->
+      <section id="tab-dashboard" class="tab-view">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Platform Dashboard</h1>
+            <p class="page-subtitle">Editorial overview of The First Seven Years static knowledge library.</p>
+          </div>
+        </div>
+        <div id="dashboard-content"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- UNIVERSAL MODAL DIALOG -->
+<div id="form-modal" class="modal">
+  <div class="modal__backdrop" onclick="ADMIN.closeModal()"></div>
+  <div class="modal__dialog modal__dialog--lg">
+    <div class="modal__header">
+      <h2 id="modal-title" class="modal__title">Form</h2>
+      <button class="modal__close" onclick="ADMIN.closeModal()">&times;</button>
+    </div>
+    <div id="modal-body" class="modal__body"></div>
+    <div class="modal__footer">
+      <button class="btn btn--outline" onclick="ADMIN.closeModal()">Cancel</button>
+      <button class="btn btn--primary" onclick="ADMIN.saveModalForm()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOTYPE LOGIN OVERLAY -->
+<div id="login-overlay" class="login-overlay" style="display:none">
+  <div class="login-modal-card">
+    <div class="login-modal-header">
+      <div class="sidebar__logo" style="color:var(--navy);font-size:1.35rem;font-weight:700">The First Seven Years</div>
+      <div style="margin-top:0.4rem"><span class="sidebar__badge">CMS PORTAL</span></div>
+      <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-top:0.75rem">Sign In to CMS</h2>
+      <p style="font-size:0.88rem;color:var(--ink-2);margin-top:0.25rem">Enter your username and password to proceed.</p>
+    </div>
+
+    <div id="login-overlay-alert" style="display:none;padding:0.6rem 0.8rem;border-radius:6px;font-size:0.85rem;margin-bottom:1rem"></div>
+
+    <form onsubmit="ADMIN.submitOverlayLogin(event)">
+      <div class="form-group" style="margin-bottom:0.85rem">
+        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Username</label>
+        <input type="text" id="overlay-login-username" class="form-control" placeholder="admin" value="admin" required style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:0.3rem;color:var(--navy)">Password</label>
+        <input type="password" id="overlay-login-pwd" class="form-control" placeholder="admin@999999" value="admin@999999" required style="width:100%;padding:0.65rem 0.8rem;border:1px solid var(--line);border-radius:6px;font-size:0.9rem">
+      </div>
+      <button type="submit" class="btn btn--primary" style="width:100%;padding:0.75rem;justify-content:center;font-weight:600">Sign In →</button>
+    </form>
+
+    <div style="margin-top:1.25rem;text-align:center">
+      <a href="/" target="_blank" style="font-size:0.84rem;color:var(--navy);text-decoration:none;font-weight:500">← Return to Public Website</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container" class="toast-container"></div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>
